@@ -202,7 +202,7 @@ export default function AdminDashboard() {
           <div className="bg-white dark:bg-stone-800 rounded-xl p-6 shadow-sm border border-stone-200 dark:border-stone-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-stone-600 dark:text-stone-400">Today's Visitors</p>
+                <p className="text-sm font-medium text-stone-600 dark:text-stone-400">Today&apos;s Visitors</p>
                 <p className="text-3xl font-bold text-purple-600">{stats.todayVisitors}</p>
               </div>
               <TrendingUp className="w-8 h-8 text-purple-500" />

@@ -115,7 +115,7 @@ export function MouseTrail() {
         lastMoveTime = now
         
         // Basic trail particles
-        const newParticles = []
+        const newParticles: any[] = []
         for (let i = 0; i < Math.min(3, Math.ceil(velocity / 20)); i++) {
           newParticles.push(createParticle(e.clientX, e.clientY, 'trail', velocity))
         }
@@ -138,7 +138,7 @@ export function MouseTrail() {
 
     const handleMouseDown = (e: MouseEvent) => {
       // Create burst effect on click
-      const burstParticles = []
+      const burstParticles: any[] = []
       for (let i = 0; i < 8; i++) {
         burstParticles.push(createParticle(e.clientX, e.clientY, 'burst', 100))
       }
