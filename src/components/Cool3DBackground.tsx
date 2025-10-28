@@ -282,7 +282,7 @@ export function Cool3DBackground() {
         ctx.save()
         ctx.globalAlpha = alpha * 0.8
         ctx.beginPath()
-        ctx.arc(trail.x, trail.y, size, 0, Math.PI * 2)
+        ctx.arc(trail.x, trail.y, Math.max(0.1, size), 0, Math.PI * 2)
         ctx.fillStyle = `rgba(${accentColor[0]}, ${accentColor[1]}, ${accentColor[2]}, ${alpha})`
         ctx.fill()
         
@@ -432,7 +432,7 @@ export function Cool3DBackground() {
               const pY = nodeScreenY + (targetScreenY - nodeScreenY) * packetProgress
               
               ctx.beginPath()
-              ctx.arc(pX, pY, 3 * packetScale, 0, Math.PI * 2)
+              ctx.arc(pX, pY, Math.max(0.1, 3 * packetScale), 0, Math.PI * 2)
               ctx.fillStyle = `rgba(${accentColor[0]}, ${accentColor[1]}, ${accentColor[2]}, ${connectionActivity * packetScale})`
               ctx.fill()
               
@@ -463,17 +463,17 @@ export function Cool3DBackground() {
         ctx.shadowBlur = glowSize
         
         ctx.beginPath()
-        ctx.arc(nodeScreenX, nodeScreenY, size, 0, Math.PI * 2)
+        ctx.arc(nodeScreenX, nodeScreenY, Math.max(0.1, size), 0, Math.PI * 2)
         ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${(0.7 + node.energy * 0.3) * nodeScale})`
         ctx.fill()
         
         // Add pulsing ring for active nodes
         if (node.activity > 0.5) {
-          const ringSize = size + Math.sin(time * 5 + node.pulse) * 3
+          const ringSize = Math.max(0.1, size + Math.sin(time * 5 + node.pulse) * 3)
           ctx.beginPath()
           ctx.arc(nodeScreenX, nodeScreenY, ringSize, 0, Math.PI * 2)
           ctx.strokeStyle = `rgba(${accentColor[0]}, ${accentColor[1]}, ${accentColor[2]}, ${node.activity * 0.5 * nodeScale})`
-          ctx.lineWidth = 2 * nodeScale
+          ctx.lineWidth = Math.max(0.1, 2 * nodeScale)
           ctx.stroke()
         }
         
@@ -559,7 +559,7 @@ export function Cool3DBackground() {
                 // Pulsing connection points
                 if (isInteracting && Math.random() < 0.1) {
                   ctx.beginPath()
-                  ctx.arc(helix.centerX + point.x, helix.centerY + point.y, 2 + Math.sin(time * 10) * 1, 0, Math.PI * 2)
+                  ctx.arc(helix.centerX + point.x, helix.centerY + point.y, Math.max(0.1, 2 + Math.sin(time * 10) * 1), 0, Math.PI * 2)
                   ctx.fillStyle = `rgba(${accentColor[0]}, ${accentColor[1]}, ${accentColor[2]}, ${connectionAlpha})`
                   ctx.fill()
                 }
@@ -687,7 +687,7 @@ export function Cool3DBackground() {
           const y = explosionY + Math.sin(angle) * distance
           
           ctx.beginPath()
-          ctx.arc(x, y, 2 + Math.random() * 3, 0, Math.PI * 2)
+          ctx.arc(x, y, Math.max(0.1, 2 + Math.random() * 3), 0, Math.PI * 2)
           ctx.fillStyle = `rgba(${accentColor[0]}, ${accentColor[1]}, ${accentColor[2]}, ${velocityMagnitude})`
           ctx.fill()
           
