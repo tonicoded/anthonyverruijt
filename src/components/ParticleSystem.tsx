@@ -20,7 +20,7 @@ export function ParticleSystem() {
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
 
-    // Particle class
+    // Minimal particle class - stone aesthetic
     class Particle {
       x: number
       y: number
@@ -28,16 +28,14 @@ export function ParticleSystem() {
       vy: number
       size: number
       opacity: number
-      hue: number
 
       constructor() {
         this.x = Math.random() * (canvas?.width || 800)
         this.y = Math.random() * (canvas?.height || 600)
-        this.vx = (Math.random() - 0.5) * 0.5
-        this.vy = (Math.random() - 0.5) * 0.5
-        this.size = Math.random() * 2 + 0.5
-        this.opacity = Math.random() * 0.5 + 0.1
-        this.hue = Math.random() * 60 + 200 // Blue to purple range
+        this.vx = (Math.random() - 0.5) * 0.2 // Slower movement
+        this.vy = (Math.random() - 0.5) * 0.2
+        this.size = Math.random() * 1 + 0.5 // Smaller particles
+        this.opacity = Math.random() * 0.15 + 0.05 // Much more subtle
       }
 
       update() {
@@ -50,9 +48,9 @@ export function ParticleSystem() {
         if (this.y < 0) this.y = canvas?.height || 600
         if (this.y > (canvas?.height || 600)) this.y = 0
 
-        // Subtle opacity pulsing
-        this.opacity += Math.sin(Date.now() * 0.001 + this.x * 0.01) * 0.005
-        this.opacity = Math.max(0.05, Math.min(0.4, this.opacity))
+        // Very subtle pulsing
+        this.opacity += Math.sin(Date.now() * 0.0005 + this.x * 0.005) * 0.002
+        this.opacity = Math.max(0.02, Math.min(0.1, this.opacity))
       }
 
       draw() {
@@ -61,27 +59,24 @@ export function ParticleSystem() {
         ctx.globalAlpha = this.opacity
         ctx.beginPath()
         
-        // Create gradient for each particle
-        const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2)
-        gradient.addColorStop(0, `hsl(${this.hue}, 70%, 60%)`)
-        gradient.addColorStop(1, `hsl(${this.hue}, 70%, 30%)`)
-        
-        ctx.fillStyle = gradient
+        // Simple stone-colored particles - no gradients
+        const isDark = document.documentElement.classList.contains('dark')
+        ctx.fillStyle = isDark ? '#64748b' : '#94a3b8' // stone-500/400
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
         ctx.fill()
         ctx.restore()
       }
     }
 
-    // Create particles
+    // Fewer particles for cleaner look
     const particles: Particle[] = []
-    const particleCount = Math.min(150, Math.floor(((canvas?.width || 800) * (canvas?.height || 600)) / 8000))
+    const particleCount = Math.min(50, Math.floor(((canvas?.width || 800) * (canvas?.height || 600)) / 15000))
     
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle())
     }
 
-    // Mouse interaction
+    // Subtle mouse interaction
     let mouse = { x: 0, y: 0 }
     const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX
@@ -94,40 +89,19 @@ export function ParticleSystem() {
       if (!canvas || !ctx) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      particles.forEach((particle, i) => {
+      particles.forEach((particle) => {
         particle.update()
         particle.draw()
 
-        // Mouse interaction - attract particles to mouse
+        // Subtle mouse interaction
         const dx = mouse.x - particle.x
         const dy = mouse.y - particle.y
         const distance = Math.sqrt(dx * dx + dy * dy)
         
-        if (distance < 100) {
-          const force = (100 - distance) / 100
-          particle.vx += dx * force * 0.001
-          particle.vy += dy * force * 0.001
-        }
-
-        // Connect nearby particles with lines
-        for (let j = i + 1; j < particles.length; j++) {
-          const other = particles[j]
-          const dx = particle.x - other.x
-          const dy = particle.y - other.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < 80) {
-            if (!ctx) return
-            ctx.save()
-            ctx.globalAlpha = (80 - distance) / 80 * 0.2
-            ctx.strokeStyle = `hsl(${(particle.hue + other.hue) / 2}, 50%, 50%)`
-            ctx.lineWidth = 0.5
-            ctx.beginPath()
-            ctx.moveTo(particle.x, particle.y)
-            ctx.lineTo(other.x, other.y)
-            ctx.stroke()
-            ctx.restore()
-          }
+        if (distance < 80) {
+          const force = (80 - distance) / 80
+          particle.vx += dx * force * 0.0005 // Much more subtle
+          particle.vy += dy * force * 0.0005
         }
       })
 
@@ -145,7 +119,7 @@ export function ParticleSystem() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
+      className="fixed inset-0 pointer-events-none z-0 opacity-60"
       style={{ 
         background: 'transparent',
         mixBlendMode: 'normal'

@@ -10,11 +10,10 @@ import { AboutModal } from '@/components/AboutModal'
 import { PhotoTooltip } from '@/components/PhotoTooltip'
 import { TypewriterEffect } from '@/components/TypewriterEffect'
 import { ParticleSystem } from '@/components/ParticleSystem'
-import { LiveCodeDemo } from '@/components/LiveCodeDemo'
-import { Interactive3DCard } from '@/components/Interactive3DCard'
-import { TestimonialsSection } from '@/components/TestimonialsSection'
-import { ServicesSection } from '@/components/ServicesSection'
-import { EnhancedContactSection } from '@/components/EnhancedContactSection'
+import { CleanCodeDemo } from '@/components/LiveCodeDemo'
+import { CleanServicesSection } from '@/components/CleanServicesSection'
+import { CleanTestimonialsSection } from '@/components/CleanTestimonialsSection'
+import { CleanContactSection } from '@/components/CleanContactSection'
 
 export default function Home() {
   const [activeModal, setActiveModal] = useState<string | null>(null)
@@ -300,44 +299,29 @@ export default function Home() {
         </button>
       </section>
 
-      {/* Live Code Demo Section */}
-      <section id="code-demo-section" className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+      {/* Code Demo Section */}
+      <section id="code-demo-section" className="py-20 bg-stone-50 dark:bg-stone-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 dark:from-gray-200 dark:via-gray-100 dark:to-gray-200 bg-clip-text text-transparent mb-6">
-              Zie hoe ik werk
+            <h2 className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-stone-100 mb-6">
+              Hoe ik werk
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-              Live code demo van hoe ik jouw website zou bouwen. Elke regel code met aandacht voor detail.
+            <p className="text-lg text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
+              Een kijkje in mijn ontwikkelproces. Clean code, duidelijke structuur.
             </p>
           </div>
-          <LiveCodeDemo />
+          <CleanCodeDemo />
         </div>
       </section>
 
       {/* Services Section */}
-      <ServicesSection />
-
-      {/* Interactive 3D Card Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 dark:from-gray-200 dark:via-gray-100 dark:to-gray-200 bg-clip-text text-transparent mb-6">
-              Interactieve ervaring
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-              Hover over de kaart en ervaar de moderne interactie die ik in al mijn projecten integreer.
-            </p>
-          </div>
-          <Interactive3DCard />
-        </div>
-      </section>
+      <CleanServicesSection />
 
       {/* Testimonials Section */}
-      <TestimonialsSection />
+      <CleanTestimonialsSection />
 
-      {/* Enhanced Contact Section */}
-      <EnhancedContactSection />
+      {/* Contact Section */}
+      <CleanContactSection />
 
       {/* Scroll to top button */}
       {showScrollTop && (
