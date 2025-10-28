@@ -31,8 +31,8 @@ export function ParticleSystem() {
       hue: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * (canvas?.width || 800)
+        this.y = Math.random() * (canvas?.height || 600)
         this.vx = (Math.random() - 0.5) * 0.5
         this.vy = (Math.random() - 0.5) * 0.5
         this.size = Math.random() * 2 + 0.5
@@ -45,10 +45,10 @@ export function ParticleSystem() {
         this.y += this.vy
 
         // Wrap around edges
-        if (this.x < 0) this.x = canvas.width
-        if (this.x > canvas.width) this.x = 0
-        if (this.y < 0) this.y = canvas.height
-        if (this.y > canvas.height) this.y = 0
+        if (this.x < 0) this.x = canvas?.width || 800
+        if (this.x > (canvas?.width || 800)) this.x = 0
+        if (this.y < 0) this.y = canvas?.height || 600
+        if (this.y > (canvas?.height || 600)) this.y = 0
 
         // Subtle opacity pulsing
         this.opacity += Math.sin(Date.now() * 0.001 + this.x * 0.01) * 0.005
@@ -56,6 +56,7 @@ export function ParticleSystem() {
       }
 
       draw() {
+        if (!ctx) return
         ctx.save()
         ctx.globalAlpha = this.opacity
         ctx.beginPath()
@@ -74,7 +75,7 @@ export function ParticleSystem() {
 
     // Create particles
     const particles: Particle[] = []
-    const particleCount = Math.min(150, Math.floor((canvas.width * canvas.height) / 8000))
+    const particleCount = Math.min(150, Math.floor(((canvas?.width || 800) * (canvas?.height || 600)) / 8000))
     
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle())
@@ -90,6 +91,7 @@ export function ParticleSystem() {
 
     // Animation loop
     const animate = () => {
+      if (!canvas || !ctx) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach((particle, i) => {
@@ -115,6 +117,7 @@ export function ParticleSystem() {
           const distance = Math.sqrt(dx * dx + dy * dy)
 
           if (distance < 80) {
+            if (!ctx) return
             ctx.save()
             ctx.globalAlpha = (80 - distance) / 80 * 0.2
             ctx.strokeStyle = `hsl(${(particle.hue + other.hue) / 2}, 50%, 50%)`
