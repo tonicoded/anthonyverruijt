@@ -138,28 +138,31 @@ export default function Home() {
         {/* Interactive Grid Background */}
         <InteractiveGrid />
         
-        {/* Professional stone-themed background elements */}
+        {/* Enhanced professional background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Subtle stone-colored orbs */}
-          <div className="absolute top-20 left-20 w-32 h-32 bg-stone-200/20 dark:bg-stone-600/10 rounded-full blur-2xl animate-float-slow"></div>
-          <div className="absolute top-1/3 right-32 w-24 h-24 bg-stone-300/15 dark:bg-stone-500/8 rounded-full blur-xl animate-float-slow" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute bottom-1/3 left-1/4 w-28 h-28 bg-stone-100/25 dark:bg-stone-700/12 rounded-full blur-2xl animate-float-slow" style={{ animationDelay: '6s' }}></div>
-          <div className="absolute bottom-20 right-1/5 w-20 h-20 bg-stone-200/18 dark:bg-stone-600/9 rounded-full blur-xl animate-float-slow" style={{ animationDelay: '9s' }}></div>
+          {/* More visible stone elements */}
+          <div className="absolute top-16 left-16 w-40 h-40 bg-stone-200/30 dark:bg-stone-600/20 rounded-full blur-3xl animate-float-slow"></div>
+          <div className="absolute top-1/4 right-20 w-32 h-32 bg-stone-300/25 dark:bg-stone-500/15 rounded-full blur-2xl animate-float-slow" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-1/4 left-1/5 w-36 h-36 bg-stone-100/35 dark:bg-stone-700/18 rounded-full blur-3xl animate-float-slow" style={{ animationDelay: '4s' }}></div>
+          <div className="absolute bottom-16 right-1/4 w-28 h-28 bg-stone-200/28 dark:bg-stone-600/16 rounded-full blur-2xl animate-float-slow" style={{ animationDelay: '6s' }}></div>
+          <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-stone-150/20 dark:bg-stone-650/12 rounded-full blur-xl animate-float-slow" style={{ animationDelay: '8s' }}></div>
 
-          {/* Geometric stone elements */}
-          <div className="absolute top-1/4 left-1/3 w-16 h-16 bg-stone-100/10 dark:bg-stone-600/5 transform rotate-45 animate-float-slow" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-2/3 right-1/4 w-12 h-12 bg-stone-200/12 dark:bg-stone-500/6 transform rotate-12 animate-float-slow" style={{ animationDelay: '5s' }}></div>
-          <div className="absolute bottom-1/2 left-1/6 w-8 h-16 bg-stone-150/8 dark:bg-stone-700/4 transform -rotate-12 animate-float-slow" style={{ animationDelay: '8s' }}></div>
+          {/* More geometric elements for depth */}
+          <div className="absolute top-1/3 left-1/4 w-20 h-20 bg-stone-100/15 dark:bg-stone-600/8 transform rotate-45 animate-float-slow" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-3/4 right-1/3 w-16 h-16 bg-stone-200/18 dark:bg-stone-500/10 transform rotate-12 animate-float-slow" style={{ animationDelay: '3s' }}></div>
+          <div className="absolute bottom-1/3 left-1/2 w-12 h-20 bg-stone-250/12 dark:bg-stone-700/7 transform -rotate-12 animate-float-slow" style={{ animationDelay: '5s' }}></div>
+          <div className="absolute top-2/3 right-1/6 w-14 h-14 bg-stone-300/16 dark:bg-stone-600/9 transform rotate-45 animate-float-slow" style={{ animationDelay: '7s' }}></div>
 
-          {/* Subtle grid pattern */}
-          <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]" style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(120,113,108,0.3) 1px, transparent 0)',
-            backgroundSize: '40px 40px'
+          {/* Enhanced grid pattern */}
+          <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(120,113,108,0.4) 1px, transparent 0)',
+            backgroundSize: '50px 50px'
           }}></div>
           
-          {/* Soft gradient overlays */}
-          <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-gradient-to-br from-stone-50/5 to-transparent dark:from-stone-800/3"></div>
-          <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-stone-100/8 to-transparent dark:from-stone-700/4"></div>
+          {/* More prominent gradient overlays */}
+          <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-stone-50/12 to-transparent dark:from-stone-800/8"></div>
+          <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-stone-100/15 to-transparent dark:from-stone-700/10"></div>
+          <div className="absolute top-1/2 left-1/4 w-1/3 h-1/3 bg-gradient-radial from-stone-200/10 to-transparent dark:from-stone-600/6"></div>
         </div>
         
         {/* Theme toggle */}
@@ -211,18 +214,13 @@ export default function Home() {
             <TechStack />
           </div>
 
-          {/* Name - met hover 3D effect */}
+          {/* Name - simplified hover effect */}
           <div className="flex-shrink-0">
-            <HoverGlow glowColor="stone" intensity={0.15}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black relative group cursor-pointer text-black dark:text-white transform transition-all duration-500 hover:scale-105 hover:-rotate-1 hover:shadow-2xl">
-                <InteractiveTypography 
-                  text="Anthony Verruijt" 
-                  className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-gray-600 hover:via-gray-800 hover:to-gray-600 dark:hover:from-gray-300 dark:hover:via-gray-100 dark:hover:to-gray-300"
-                />
-                {/* Underline effect */}
-                <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-stone-500 to-stone-700 dark:from-stone-400 dark:to-stone-200 group-hover:w-full transition-all duration-700 ease-out"></div>
-              </h1>
-            </HoverGlow>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black relative group cursor-pointer text-black dark:text-white transition-all duration-300 hover:scale-[1.02]">
+              Anthony Verruijt
+              {/* Subtle underline effect */}
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-stone-600 to-stone-800 dark:from-stone-400 dark:to-stone-200 group-hover:w-full transition-all duration-500 ease-out"></div>
+            </h1>
           </div>
 
           {/* Tagline - met hover 3D effect */}
