@@ -138,39 +138,28 @@ export default function Home() {
         {/* Interactive Grid Background */}
         <InteractiveGrid />
         
-        {/* SPECTACULAR floating background elements */}
+        {/* Professional stone-themed background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Original floating circles with enhanced effects */}
-          <div className="absolute top-20 left-20 w-20 h-20 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-xl animate-cosmic-drift"></div>
-          <div className="absolute top-40 right-32 w-16 h-16 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-xl animate-dimensional-shift" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-32 left-32 w-24 h-24 bg-green-200/20 dark:bg-green-500/10 rounded-full blur-xl animate-quantum-tunnel" style={{ animationDelay: '4s' }}></div>
-          <div className="absolute bottom-20 right-20 w-18 h-18 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-xl animate-matrix-glitch" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-1/2 left-10 w-12 h-12 bg-pink-200/20 dark:bg-pink-500/10 rounded-full blur-xl animate-hologram-flicker" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute top-1/3 right-10 w-14 h-14 bg-indigo-200/20 dark:bg-indigo-500/10 rounded-full blur-xl animate-neural-pulse" style={{ animationDelay: '5s' }}></div>
+          {/* Subtle stone-colored orbs */}
+          <div className="absolute top-20 left-20 w-32 h-32 bg-stone-200/20 dark:bg-stone-600/10 rounded-full blur-2xl animate-float-slow"></div>
+          <div className="absolute top-1/3 right-32 w-24 h-24 bg-stone-300/15 dark:bg-stone-500/8 rounded-full blur-xl animate-float-slow" style={{ animationDelay: '3s' }}></div>
+          <div className="absolute bottom-1/3 left-1/4 w-28 h-28 bg-stone-100/25 dark:bg-stone-700/12 rounded-full blur-2xl animate-float-slow" style={{ animationDelay: '6s' }}></div>
+          <div className="absolute bottom-20 right-1/5 w-20 h-20 bg-stone-200/18 dark:bg-stone-600/9 rounded-full blur-xl animate-float-slow" style={{ animationDelay: '9s' }}></div>
 
-          {/* Nieuwe geometric shapes */}
-          <div className="floating-element floating-triangle animate-cosmic-drift absolute top-16 left-1/4" style={{ animationDelay: '1s' }}></div>
-          <div className="floating-element floating-diamond animate-dimensional-shift absolute top-1/3 right-1/4" style={{ animationDelay: '3s' }}></div>
-          <div className="floating-element floating-hexagon animate-quantum-tunnel absolute bottom-1/3 left-1/3" style={{ animationDelay: '2s' }}></div>
-          <div className="floating-element floating-star animate-matrix-glitch absolute bottom-20 right-1/3" style={{ animationDelay: '4s' }}></div>
-          
-          {/* Meer geometric shapes */}
-          <div className="floating-element floating-triangle animate-hologram-flicker absolute top-2/3 left-20" style={{ animationDelay: '6s' }}></div>
-          <div className="floating-element floating-diamond animate-neural-pulse absolute top-20 right-20" style={{ animationDelay: '7s' }}></div>
-          <div className="floating-element floating-hexagon animate-cosmic-drift absolute bottom-40 left-1/2" style={{ animationDelay: '5s' }}></div>
-          <div className="floating-element floating-star animate-dimensional-shift absolute top-40 left-1/3" style={{ animationDelay: '8s' }}></div>
+          {/* Geometric stone elements */}
+          <div className="absolute top-1/4 left-1/3 w-16 h-16 bg-stone-100/10 dark:bg-stone-600/5 transform rotate-45 animate-float-slow" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-2/3 right-1/4 w-12 h-12 bg-stone-200/12 dark:bg-stone-500/6 transform rotate-12 animate-float-slow" style={{ animationDelay: '5s' }}></div>
+          <div className="absolute bottom-1/2 left-1/6 w-8 h-16 bg-stone-150/8 dark:bg-stone-700/4 transform -rotate-12 animate-float-slow" style={{ animationDelay: '8s' }}></div>
 
-          {/* Extra glowing orbs met nieuwe animaties */}
-          <div className="absolute top-10 left-1/2 w-8 h-8 bg-cyan-300/20 dark:bg-cyan-400/15 rounded-full blur-lg animate-quantum-tunnel" style={{ animationDelay: '9s' }}></div>
-          <div className="absolute bottom-10 left-1/4 w-10 h-10 bg-yellow-300/20 dark:bg-yellow-400/15 rounded-full blur-lg animate-matrix-glitch" style={{ animationDelay: '10s' }}></div>
-          <div className="absolute top-1/4 right-1/3 w-6 h-6 bg-red-300/20 dark:bg-red-400/15 rounded-full blur-lg animate-hologram-flicker" style={{ animationDelay: '11s' }}></div>
-          <div className="absolute bottom-1/4 right-1/2 w-12 h-12 bg-emerald-300/20 dark:bg-emerald-400/15 rounded-full blur-lg animate-cosmic-drift" style={{ animationDelay: '12s' }}></div>
-
-          {/* Grid pattern overlay */}
-          <div className="absolute inset-0 opacity-10 dark:opacity-20" style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(100,100,100,0.3) 1px, transparent 0)',
-            backgroundSize: '30px 30px'
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(120,113,108,0.3) 1px, transparent 0)',
+            backgroundSize: '40px 40px'
           }}></div>
+          
+          {/* Soft gradient overlays */}
+          <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-gradient-to-br from-stone-50/5 to-transparent dark:from-stone-800/3"></div>
+          <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-stone-100/8 to-transparent dark:from-stone-700/4"></div>
         </div>
         
         {/* Theme toggle */}
@@ -335,7 +324,7 @@ export default function Home() {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 left-8 z-50 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="fixed bottom-8 left-8 z-50 w-12 h-12 bg-stone-200 dark:bg-stone-700 text-stone-800 dark:text-stone-200 rounded-full flex items-center justify-center hover:scale-110 hover:bg-stone-300 dark:hover:bg-stone-600 transition-all duration-300 shadow-lg hover:shadow-xl border border-stone-300 dark:border-stone-600"
           aria-label="Scroll naar boven"
         >
           <ChevronUp size={20} />
