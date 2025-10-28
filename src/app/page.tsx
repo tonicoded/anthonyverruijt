@@ -21,6 +21,7 @@ import { ScrollProgress } from '@/components/ScrollProgress'
 import { SkillRadar } from '@/components/SkillRadar'
 import { InteractiveTypography } from '@/components/InteractiveTypography'
 import { ParallaxText } from '@/components/ParallaxText'
+import { Cool3DBackground } from '@/components/Cool3DBackground'
 
 export default function Home() {
   const [activeModal, setActiveModal] = useState<string | null>(null)
@@ -138,32 +139,11 @@ export default function Home() {
         {/* Interactive Grid Background */}
         <InteractiveGrid />
         
-        {/* Enhanced professional background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* More visible stone elements */}
-          <div className="absolute top-16 left-16 w-40 h-40 bg-stone-200/30 dark:bg-stone-600/20 rounded-full blur-3xl animate-float-slow"></div>
-          <div className="absolute top-1/4 right-20 w-32 h-32 bg-stone-300/25 dark:bg-stone-500/15 rounded-full blur-2xl animate-float-slow" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-1/4 left-1/5 w-36 h-36 bg-stone-100/35 dark:bg-stone-700/18 rounded-full blur-3xl animate-float-slow" style={{ animationDelay: '4s' }}></div>
-          <div className="absolute bottom-16 right-1/4 w-28 h-28 bg-stone-200/28 dark:bg-stone-600/16 rounded-full blur-2xl animate-float-slow" style={{ animationDelay: '6s' }}></div>
-          <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-stone-150/20 dark:bg-stone-650/12 rounded-full blur-xl animate-float-slow" style={{ animationDelay: '8s' }}></div>
-
-          {/* More geometric elements for depth */}
-          <div className="absolute top-1/3 left-1/4 w-20 h-20 bg-stone-100/15 dark:bg-stone-600/8 transform rotate-45 animate-float-slow" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-3/4 right-1/3 w-16 h-16 bg-stone-200/18 dark:bg-stone-500/10 transform rotate-12 animate-float-slow" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute bottom-1/3 left-1/2 w-12 h-20 bg-stone-250/12 dark:bg-stone-700/7 transform -rotate-12 animate-float-slow" style={{ animationDelay: '5s' }}></div>
-          <div className="absolute top-2/3 right-1/6 w-14 h-14 bg-stone-300/16 dark:bg-stone-600/9 transform rotate-45 animate-float-slow" style={{ animationDelay: '7s' }}></div>
-
-          {/* Enhanced grid pattern */}
-          <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]" style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(120,113,108,0.4) 1px, transparent 0)',
-            backgroundSize: '50px 50px'
-          }}></div>
-          
-          {/* More prominent gradient overlays */}
-          <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-stone-50/12 to-transparent dark:from-stone-800/8"></div>
-          <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-stone-100/15 to-transparent dark:from-stone-700/10"></div>
-          <div className="absolute top-1/2 left-1/4 w-1/3 h-1/3 bg-gradient-radial from-stone-200/10 to-transparent dark:from-stone-600/6"></div>
-        </div>
+        {/* Cool 3D animated background */}
+        <Cool3DBackground />
+        
+        {/* Subtle overlay for better text readability */}
+        <div className="absolute inset-0 bg-stone-50/50 dark:bg-slate-900/70 pointer-events-none"></div>
         
         {/* Theme toggle */}
         <ThemeToggle />
