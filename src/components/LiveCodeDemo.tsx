@@ -99,7 +99,7 @@ export function CleanCodeDemo() {
         {displayedCode.map((line, index) => (
           <div key={index} className="flex items-start">
             <span className="text-stone-400 dark:text-stone-600 select-none w-6 text-right pr-4 text-xs">
-              {line.trim() ? String(index + 1).padStart(2, ' ') : ''}
+              {line && line.trim() ? String(index + 1).padStart(2, ' ') : ''}
             </span>
             <span className={getLineColor(line)}>
               {line}
