@@ -14,7 +14,6 @@ import { CleanCodeDemo } from '@/components/LiveCodeDemo'
 import { CleanServicesSection } from '@/components/CleanServicesSection'
 import { CleanTestimonialsSection } from '@/components/CleanTestimonialsSection'
 import { CleanContactSection } from '@/components/CleanContactSection'
-import { FloatingSkillIndicators } from '@/components/FloatingSkillIndicators'
 import { CursorTrail } from '@/components/CursorTrail'
 import { InteractiveGrid } from '@/components/InteractiveGrid'
 import { HoverGlow } from '@/components/HoverGlow'
@@ -130,7 +129,6 @@ export default function Home() {
     <>
       {/* Interactive Background Elements */}
       <ParticleSystem />
-      <FloatingSkillIndicators />
       <CursorTrail />
       <ScrollProgress />
       
@@ -278,35 +276,19 @@ export default function Home() {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center flex-shrink-0">
-            <HoverGlow glowColor="blue" intensity={0.2}>
-              <a
-                href="tel:0640470662"
-                className="group relative px-8 py-4 bg-gradient-to-r from-gray-900 to-black dark:bg-slate-700 rounded-xl font-bold text-white text-sm sm:text-base hover:scale-110 hover:-translate-y-1 hover:rotate-1 transition-all duration-300 hover:shadow-2xl border border-gray-700 dark:border-slate-600 hover:border-gray-600 dark:hover:border-slate-500 overflow-hidden"
-              >
-                <span className="flex items-center gap-2 relative z-10">
-                  <div className="w-2 h-2 bg-gray-300 dark:bg-slate-400 rounded-full group-hover:bg-blue-400 transition-colors duration-300"></div>
-                  Neem Contact Op
-                  <div className="w-2 h-2 bg-gray-300 dark:bg-slate-400 rounded-full group-hover:bg-purple-400 transition-colors duration-300"></div>
-                </span>
-                {/* Hover shimmer effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
-              </a>
-            </HoverGlow>
+            <a
+              href="tel:0640470662"
+              className="px-8 py-4 bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 rounded-xl font-semibold text-sm sm:text-base hover:bg-stone-800 dark:hover:bg-stone-200 transition-all duration-200 hover:scale-105"
+            >
+              Neem Contact Op
+            </a>
             
-            <HoverGlow glowColor="green" intensity={0.15}>
-              <a
-                href="mailto:anthonyverruijt@hotmail.com"
-                className="group relative px-8 py-4 bg-white dark:bg-gray-900 rounded-xl font-bold text-gray-900 dark:text-white text-sm sm:text-base border border-gray-300 dark:border-slate-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:-rotate-1 hover:border-gray-400 dark:hover:border-slate-500 hover:shadow-2xl overflow-hidden"
-              >
-                <span className="flex items-center gap-2 relative z-10">
-                  <div className="w-2 h-2 bg-gray-600 dark:bg-slate-400 rounded-full group-hover:bg-green-400 transition-colors duration-300"></div>
-                  Plan een Gesprek
-                  <div className="w-2 h-2 bg-gray-600 dark:bg-slate-400 rounded-full group-hover:bg-orange-400 transition-colors duration-300"></div>
-                </span>
-                {/* Hover shimmer effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-gray-400/20 to-transparent skew-x-12"></div>
-              </a>
-            </HoverGlow>
+            <a
+              href="mailto:anthonyverruijt@hotmail.com"
+              className="px-8 py-4 bg-transparent border-2 border-stone-300 dark:border-stone-600 text-stone-900 dark:text-stone-100 rounded-xl font-semibold text-sm sm:text-base hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 hover:scale-105"
+            >
+              Plan een Gesprek
+            </a>
           </div>
         </div>
 

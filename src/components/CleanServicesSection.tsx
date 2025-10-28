@@ -10,7 +10,7 @@ export function CleanServicesSection() {
       description: 'Responsive, snelle websites die bezoekers overtuigen en converteren naar klanten.',
       features: ['Mobile-first design', 'SEO geoptimaliseerd', 'CMS integratie'],
       price: 'Vanaf €350',
-      timeline: '1-2 weken'
+      timeline: '3-7 dagen'
     },
     {
       icon: Smartphone,

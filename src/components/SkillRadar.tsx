@@ -66,8 +66,8 @@ export function SkillRadar() {
               fill="none"
               stroke="currentColor"
               strokeWidth="0.2"
-              className="text-stone-300 dark:text-stone-600"
-              opacity={0.5}
+              className="text-stone-400 dark:text-stone-500"
+              opacity={0.3}
             />
           ))}
           
@@ -83,8 +83,8 @@ export function SkillRadar() {
                 y2={end.y}
                 stroke="currentColor"
                 strokeWidth="0.2"
-                className="text-stone-300 dark:text-stone-600"
-                opacity={0.5}
+                className="text-stone-400 dark:text-stone-500"
+                opacity={0.3}
               />
             )
           })}
@@ -97,7 +97,7 @@ export function SkillRadar() {
             y2="50"
             stroke="currentColor"
             strokeWidth="0.5"
-            className="text-stone-500 dark:text-stone-400"
+            className="text-stone-600 dark:text-stone-400"
             style={{
               transformOrigin: '50% 50%',
               transform: `rotate(${animationPhase * 120}deg)`,
@@ -115,7 +115,7 @@ export function SkillRadar() {
                   cy={position.y}
                   r="1.5"
                   fill="currentColor"
-                  className="text-stone-600 dark:text-stone-400"
+                  className="text-stone-700 dark:text-stone-300"
                   style={{
                     opacity: isVisible ? 1 : 0,
                     transform: `scale(${isVisible ? 1 : 0})`,
