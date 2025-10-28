@@ -128,7 +128,7 @@ export function SkillRadar() {
                   x={position.x}
                   y={position.y - 3}
                   textAnchor="middle"
-                  className="text-stone-700 dark:text-stone-300 text-xs font-medium"
+                  className="text-stone-800 dark:text-stone-100 text-xs font-medium"
                   style={{
                     fontSize: '3px',
                     opacity: isVisible ? 1 : 0,
@@ -143,7 +143,7 @@ export function SkillRadar() {
                   x={position.x}
                   y={position.y + 2}
                   textAnchor="middle"
-                  className="text-stone-500 dark:text-stone-400"
+                  className="text-stone-600 dark:text-stone-200"
                   style={{
                     fontSize: '2px',
                     opacity: isVisible ? 1 : 0,
@@ -160,10 +160,10 @@ export function SkillRadar() {
         {/* Center label */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <div className="text-sm font-bold text-stone-800 dark:text-stone-200">
+            <div className="text-sm font-bold text-stone-800 dark:text-stone-100">
               Skills
             </div>
-            <div className="text-xs text-stone-600 dark:text-stone-400">
+            <div className="text-xs text-stone-600 dark:text-stone-300">
               Radar
             </div>
           </div>

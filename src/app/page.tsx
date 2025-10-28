@@ -241,10 +241,10 @@ export default function Home() {
             <div className="relative text-sm sm:text-lg text-gray-700 dark:text-slate-200 leading-relaxed h-12 sm:h-16 flex items-center justify-center bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-xl border border-gray-200 dark:border-slate-600 px-6 py-3 hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-xl group overflow-hidden">
               <TypewriterEffect 
                 phrases={[
-                  "iOS apps die gebruikers liefhebben",
-                  "Websites die converteren", 
-                  "Processen automatiseren met Python",
-                  "Ideeën werkelijkheid maken"
+                  "Professionele websites vanaf €350",
+                  "iOS apps die echt werken", 
+                  "Webshops die verkopen",
+                  "Van idee naar realiteit in 3-7 dagen"
                 ]}
                 className="font-semibold text-gray-800 dark:text-slate-100 relative z-10"
               />
