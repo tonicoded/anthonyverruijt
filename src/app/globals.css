@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --text-primary: #1c1917;
+    --text-secondary: #57534e;
+  }
+  
+  .dark {
+    --text-primary: #fafaf9;
+    --text-secondary: #d6d3d1;
+  }
+  
   html {
     scroll-behavior: smooth;
     transition: all 0.3s ease;
