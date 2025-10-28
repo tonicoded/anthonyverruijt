@@ -53,24 +53,24 @@ export function Cool3DBackground() {
 
     const shapes: Shape3D[] = []
 
-    // Create subtle 3D shapes
-    for (let i = 0; i < 12; i++) {
+    // Create visible but balanced 3D shapes
+    for (let i = 0; i < 8; i++) {
       const types: Array<'cube' | 'sphere' | 'diamond'> = ['cube', 'sphere', 'diamond']
-      const baseSize = Math.random() * 25 + 15
+      const baseSize = Math.random() * 35 + 25
       shapes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        z: Math.random() * 600 + 300,
+        z: Math.random() * 400 + 200,
         rotX: Math.random() * Math.PI * 2,
         rotY: Math.random() * Math.PI * 2,
         rotZ: Math.random() * Math.PI * 2,
         size: baseSize,
         baseSize: baseSize,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.2,
-        speedZ: (Math.random() - 0.5) * 0.1,
+        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: (Math.random() - 0.5) * 0.3,
+        speedZ: (Math.random() - 0.5) * 0.2,
         type: types[Math.floor(Math.random() * types.length)],
-        opacity: Math.random() * 0.3 + 0.1
+        opacity: Math.random() * 0.4 + 0.3
       })
     }
 
@@ -89,15 +89,15 @@ export function Cool3DBackground() {
     }
 
     const particles: Particle[] = []
-    for (let i = 0; i < 25; i++) {
-      const baseSize = Math.random() * 3 + 1
+    for (let i = 0; i < 15; i++) {
+      const baseSize = Math.random() * 2 + 1
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        z: Math.random() * 400 + 100,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        vz: (Math.random() - 0.5) * 0.2,
+        z: Math.random() * 300 + 100,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        vz: (Math.random() - 0.5) * 0.1,
         size: baseSize,
         baseSize: baseSize,
         life: Math.random() * 200 + 100,
@@ -116,32 +116,43 @@ export function Cool3DBackground() {
       ctx.scale(scale, scale)
 
       const baseColor = isDark ? [214, 211, 209] : [87, 83, 78]
-      const finalOpacity = shape.opacity * scale * 0.8
+      const finalOpacity = Math.min(1, shape.opacity * scale * 1.5)
 
       switch (shape.type) {
         case 'cube':
-          // Simple smooth cube
+          // Clear visible cube with better 3D effect
           const size = shape.size
           ctx.save()
-          ctx.rotate(shape.rotY * 0.3)
+          ctx.rotate(shape.rotY * 0.5)
           
-          // Front face
+          // Front face - main visible face
           ctx.beginPath()
           ctx.rect(-size/2, -size/2, size, size)
-          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.4})`
+          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.6})`
           ctx.fill()
           ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity})`
-          ctx.lineWidth = 1
+          ctx.lineWidth = 2
           ctx.stroke()
           
-          // Side face for 3D effect
+          // Top face for 3D depth
+          ctx.beginPath()
+          ctx.moveTo(-size/2, -size/2)
+          ctx.lineTo(-size/2 + size*0.4, -size/2 - size*0.4)
+          ctx.lineTo(size/2 + size*0.4, -size/2 - size*0.4)
+          ctx.lineTo(size/2, -size/2)
+          ctx.closePath()
+          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.4})`
+          ctx.fill()
+          ctx.stroke()
+          
+          // Right side face
           ctx.beginPath()
           ctx.moveTo(size/2, -size/2)
-          ctx.lineTo(size/2 + size*0.3, -size/2 - size*0.3)
-          ctx.lineTo(size/2 + size*0.3, size/2 - size*0.3)
+          ctx.lineTo(size/2 + size*0.4, -size/2 - size*0.4)
+          ctx.lineTo(size/2 + size*0.4, size/2 - size*0.4)
           ctx.lineTo(size/2, size/2)
           ctx.closePath()
-          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.2})`
+          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.3})`
           ctx.fill()
           ctx.stroke()
           
@@ -149,37 +160,58 @@ export function Cool3DBackground() {
           break
 
         case 'sphere':
-          // Simple gradient sphere
-          const gradient = ctx.createRadialGradient(-shape.size*0.3, -shape.size*0.3, 0, 0, 0, shape.size)
-          gradient.addColorStop(0, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.6})`)
+          // Enhanced gradient sphere
+          const gradient = ctx.createRadialGradient(-shape.size*0.4, -shape.size*0.4, 0, 0, 0, shape.size)
+          gradient.addColorStop(0, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.8})`)
+          gradient.addColorStop(0.7, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.4})`)
           gradient.addColorStop(1, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.1})`)
           
           ctx.beginPath()
           ctx.arc(0, 0, shape.size, 0, Math.PI * 2)
           ctx.fillStyle = gradient
           ctx.fill()
-          ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.5})`
-          ctx.lineWidth = 1
+          
+          // Add outer ring for definition
+          ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.8})`
+          ctx.lineWidth = 2
           ctx.stroke()
+          
+          // Inner highlight
+          ctx.beginPath()
+          ctx.arc(-shape.size*0.3, -shape.size*0.3, shape.size*0.2, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(${baseColor[0] + 20}, ${baseColor[1] + 20}, ${baseColor[2] + 20}, ${finalOpacity * 0.6})`
+          ctx.fill()
           break
 
         case 'diamond':
-          // Simple diamond
+          // Enhanced diamond with inner detail
           ctx.save()
-          ctx.rotate(shape.rotZ * 0.5)
+          ctx.rotate(shape.rotZ * 0.7)
           
+          // Outer diamond
           ctx.beginPath()
           ctx.moveTo(0, -shape.size)
-          ctx.lineTo(shape.size * 0.6, 0)
+          ctx.lineTo(shape.size * 0.7, 0)
           ctx.lineTo(0, shape.size)
-          ctx.lineTo(-shape.size * 0.6, 0)
+          ctx.lineTo(-shape.size * 0.7, 0)
           ctx.closePath()
           
-          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.3})`
+          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.5})`
           ctx.fill()
           ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity})`
-          ctx.lineWidth = 1
+          ctx.lineWidth = 2
           ctx.stroke()
+          
+          // Inner diamond for depth
+          ctx.beginPath()
+          ctx.moveTo(0, -shape.size * 0.6)
+          ctx.lineTo(shape.size * 0.4, 0)
+          ctx.lineTo(0, shape.size * 0.6)
+          ctx.lineTo(-shape.size * 0.4, 0)
+          ctx.closePath()
+          
+          ctx.fillStyle = `rgba(${baseColor[0] + 15}, ${baseColor[1] + 15}, ${baseColor[2] + 15}, ${finalOpacity * 0.7})`
+          ctx.fill()
           
           ctx.restore()
           break
@@ -206,15 +238,15 @@ export function Cool3DBackground() {
         shape.rotZ += 0.004
 
         // Gentle size pulsing
-        shape.size = shape.baseSize + Math.sin(time * 0.5 + index) * 3
+        shape.size = shape.baseSize + Math.sin(time * 0.4 + index) * 4
 
         // Boundary wrapping
-        if (shape.x > canvas.width + 60) shape.x = -60
-        if (shape.x < -60) shape.x = canvas.width + 60
-        if (shape.y > canvas.height + 60) shape.y = -60
-        if (shape.y < -60) shape.y = canvas.height + 60
-        if (shape.z > 900) shape.z = 300
-        if (shape.z < 300) shape.z = 900
+        if (shape.x > canvas.width + 80) shape.x = -80
+        if (shape.x < -80) shape.x = canvas.width + 80
+        if (shape.y > canvas.height + 80) shape.y = -80
+        if (shape.y < -80) shape.y = canvas.height + 80
+        if (shape.z > 600) shape.z = 200
+        if (shape.z < 200) shape.z = 600
 
         drawShape(shape)
       })
@@ -248,8 +280,14 @@ export function Cool3DBackground() {
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2)
         const baseColor = isDark ? [214, 211, 209] : [87, 83, 78]
-        ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${0.4 * scale * pulseOpacity})`
+        ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${0.3 * scale * pulseOpacity})`
         ctx.fill()
+        
+        // Add subtle glow to particles
+        ctx.shadowColor = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0.3)`
+        ctx.shadowBlur = 3
+        ctx.fill()
+        ctx.shadowBlur = 0
       })
 
       animationRef.current = requestAnimationFrame(animate)
