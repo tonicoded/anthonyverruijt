@@ -71,23 +71,43 @@ export function ProjectsModal() {
 
   return (
     <div className="text-stone-800 dark:text-stone-200">
-      {/* Animated Header */}
-      <div className="text-center mb-12 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-200/30 dark:via-gray-700/30 to-transparent blur-3xl"></div>
-        <div className="relative">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full animate-pulse"></div>
-            <h3 className="text-4xl font-black bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 dark:from-gray-200 dark:via-gray-400 dark:to-gray-200 bg-clip-text text-transparent">
-              Mijn Werk
-            </h3>
-            <div className="w-2 h-2 bg-gray-700 dark:bg-gray-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+      {/* Modern Hero Header */}
+      <div className="relative mb-16 text-center">
+        {/* Hero Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-pink-900/10 rounded-3xl"></div>
+        
+        {/* Floating orbs */}
+        <div className="absolute top-8 right-12 w-16 h-16 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+        <div className="absolute bottom-8 left-12 w-20 h-20 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        
+        <div className="relative p-12">
+          <div className="mb-6">
+            <div className="inline-flex items-center gap-4 mb-6">
+              <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+              <h3 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-gray-900 via-blue-700 to-purple-700 dark:from-gray-100 dark:via-blue-300 dark:to-purple-300 bg-clip-text text-transparent">
+                Mijn Werk
+              </h3>
+              <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+            </div>
+            
+            <div className="flex items-center justify-center gap-2 text-lg font-semibold text-gray-600 dark:text-gray-400 mb-6">
+              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+              <span>Van Idee tot App Store</span>
+              <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse"></div>
+            </div>
           </div>
-          <div className="text-stone-600 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed text-lg">
-            Van iOS apps in de App Store tot custom websites. 
-            <span className="inline-block ml-2 relative">
-              <span className="font-semibold text-gray-800 dark:text-gray-200">Elk project met passie gebouwd</span>
-              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transform scale-x-0 animate-scale-x"></div>
-            </span>
+          
+          <div className="max-w-2xl mx-auto">
+            <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-lg mb-4">
+              Van <span className="font-semibold text-blue-600 dark:text-blue-400">iOS apps</span> in de App Store tot 
+              <span className="font-semibold text-purple-600 dark:text-purple-400"> custom websites</span> en 
+              <span className="font-semibold text-pink-600 dark:text-pink-400"> automatisering</span>.
+            </p>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-6 py-3 rounded-full text-sm font-bold shadow-lg">
+              <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+              Elk project met passie gebouwd
+              <div className="w-2 h-2 bg-white/80 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+            </div>
           </div>
         </div>
       </div>

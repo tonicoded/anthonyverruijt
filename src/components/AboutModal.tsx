@@ -90,19 +90,28 @@ export function AboutModal() {
         ))}
       </div>
 
-      {/* Header met foto en basis info */}
-      <div className="text-center mb-12 relative pt-8">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-200/30 dark:via-gray-700/30 to-transparent blur-3xl"></div>
-        <div className="relative">
-          {/* Clean Profile Photo */}
-          <div className="relative w-28 h-28 mx-auto mb-6 group mt-4">
-            {/* Clean rotating ring */}
-            <div className="absolute inset-0 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-full animate-spin-slow opacity-50 z-0"></div>
-            <div className="relative w-full h-full bg-stone-200 dark:bg-stone-700 rounded-full overflow-hidden border-4 border-white dark:border-stone-800 shadow-2xl z-20">
+      {/* Modern Header met Hero Layout */}
+      <div className="relative mb-16">
+        {/* Hero Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-pink-900/10 rounded-3xl"></div>
+        
+        {/* Floating Elements */}
+        <div className="absolute top-8 left-8 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+        <div className="absolute bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        
+        <div className="relative p-12 text-center">
+          {/* Enhanced Profile Photo */}
+          <div className="relative w-36 h-36 mx-auto mb-8 group">
+            {/* Multiple rotating rings */}
+            <div className="absolute inset-0 border-2 border-dashed border-blue-300/50 dark:border-blue-500/30 rounded-full animate-spin-slow"></div>
+            <div className="absolute inset-2 border-2 border-dotted border-purple-300/50 dark:border-purple-500/30 rounded-full animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '12s' }}></div>
+            
+            {/* Photo container with glassmorphism */}
+            <div className="relative w-full h-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-xl rounded-full overflow-hidden border-4 border-white/60 dark:border-stone-700/60 shadow-2xl z-20 hover:shadow-3xl transition-all duration-500">
               <img 
                 src="/foto.jpg" 
                 alt="Anthony Verruijt"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-3"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
@@ -111,79 +120,129 @@ export function AboutModal() {
                   }
                 }}
               />
-              <div className="w-full h-full bg-stone-200 dark:bg-stone-700 rounded-full flex items-center justify-center hidden">
-                <span className="text-2xl font-bold text-stone-600 dark:text-stone-300">AV</span>
+              <div className="w-full h-full bg-gradient-to-br from-stone-200 to-stone-300 dark:from-stone-700 dark:to-stone-800 rounded-full flex items-center justify-center hidden">
+                <span className="text-3xl font-bold text-stone-600 dark:text-stone-300">AV</span>
               </div>
               
-              {/* Clean Scanning Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-800/30 dark:via-white/30 to-transparent skew-x-12 -translate-x-full group-hover:animate-scan-profile"></div>
+              {/* Enhanced scanning effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/40 dark:via-blue-300/30 to-transparent skew-x-12 -translate-x-full group-hover:animate-scan-profile"></div>
+              
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/0 via-purple-400/0 to-pink-400/0 group-hover:from-blue-400/20 group-hover:via-purple-400/20 group-hover:to-pink-400/20 rounded-full transition-all duration-700"></div>
             </div>
             
-            {/* Clean minimal indicators */}
-            <div className="absolute -top-1 -right-1 w-2 h-2 bg-gray-800 dark:bg-white rounded-full animate-bounce z-30"></div>
-            <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full animate-pulse z-30"></div>
+            {/* Status indicators with better positioning */}
+            <div className="absolute -top-2 -right-2 flex items-center gap-1 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg z-30">
+              <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+              Online
+            </div>
+            <div className="absolute -bottom-2 -left-2 flex items-center gap-1 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg z-30">
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+              Available
+            </div>
           </div>
           
-          <h3 className="text-4xl font-black mb-4 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 dark:from-gray-200 dark:via-gray-400 dark:to-gray-200 bg-clip-text text-transparent">
-            Anthony Verruijt
-          </h3>
-          <div className="flex items-center justify-center text-stone-600 dark:text-stone-400 mb-8 group">
-            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-xl border border-gray-200 dark:border-stone-600 shadow-lg group-hover:shadow-xl transition-all duration-300">
-              <MapPin size={18} className="text-red-500 animate-pulse" />
-              <span className="font-semibold">Amersfoort, Nederland</span>
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          {/* Enhanced Name with typing effect */}
+          <div className="mb-6">
+            <h3 className="text-5xl md:text-6xl font-black mb-2 bg-gradient-to-r from-gray-900 via-blue-700 to-purple-700 dark:from-gray-100 dark:via-blue-300 dark:to-purple-300 bg-clip-text text-transparent">
+              Anthony Verruijt
+            </h3>
+            <div className="flex items-center justify-center gap-2 text-lg font-semibold text-gray-600 dark:text-gray-400">
+              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+              <span>Freelance Developer</span>
+              <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse"></div>
+            </div>
+          </div>
+          
+          {/* Enhanced Location with better styling */}
+          <div className="flex items-center justify-center mb-8">
+            <div className="flex items-center gap-4 px-8 py-4 rounded-2xl bg-white/70 dark:bg-stone-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-stone-600/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 group">
+              <MapPin size={20} className="text-red-500 group-hover:animate-bounce" />
+              <span className="font-bold text-gray-800 dark:text-gray-200">Amersfoort, Nederland</span>
+              <div className="flex gap-1">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Quick stats row */}
+          <div className="flex items-center justify-center gap-8 text-sm">
+            <div className="text-center">
+              <div className="text-2xl font-black text-blue-600 dark:text-blue-400">15+</div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium">Jaren</div>
+            </div>
+            <div className="w-px h-8 bg-gray-300 dark:bg-gray-600"></div>
+            <div className="text-center">
+              <div className="text-2xl font-black text-purple-600 dark:text-purple-400">50+</div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium">Projecten</div>
+            </div>
+            <div className="w-px h-8 bg-gray-300 dark:bg-gray-600"></div>
+            <div className="text-center">
+              <div className="text-2xl font-black text-pink-600 dark:text-pink-400">25+</div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium">Klanten</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
-        {stats.map((stat, index) => (
-          <div 
-            key={stat.label}
-            className="relative bg-gradient-to-br from-white via-gray-50 to-white dark:from-stone-800 dark:via-stone-900 dark:to-stone-800 rounded-2xl p-6 border border-gray-200 dark:border-stone-700 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group overflow-hidden"
-            style={{ animationDelay: `${index * 100}ms` }}
-          >
-            <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}></div>
-            <div className="relative z-10 text-center">
-              <div className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${stat.color} rounded-full mb-4 shadow-lg`}>
-                <stat.icon size={24} className="text-white" />
-              </div>
-              <div className="text-3xl font-black text-stone-900 dark:text-stone-100 mb-2">{stat.value}</div>
-              <div className="text-sm font-semibold text-stone-600 dark:text-stone-400 uppercase tracking-wider">{stat.label}</div>
+
+      {/* Modern Intro Cards */}
+      <div className="grid md:grid-cols-2 gap-8 mb-16">
+        {/* Over Mij Card */}
+        <div className="relative bg-gradient-to-br from-white/80 via-blue-50/50 to-purple-50/50 dark:from-stone-800/80 dark:via-stone-900/50 dark:to-stone-800/50 backdrop-blur-xl rounded-3xl p-8 border border-white/60 dark:border-stone-700/60 shadow-2xl hover:shadow-3xl transition-all duration-500 group overflow-hidden">
+          {/* Floating gradient orb */}
+          <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-blue-400/30 to-purple-400/30 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
+          
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+              <h4 className="text-2xl font-black text-stone-900 dark:text-stone-100">Over Mij</h4>
+              <div className="flex-1 h-px bg-gradient-to-r from-blue-500/30 to-transparent"></div>
+            </div>
+            
+            <div className="space-y-4 text-lg leading-relaxed">
+              <p className="text-stone-700 dark:text-stone-300">
+                <span className="font-bold text-blue-600 dark:text-blue-400">Hoi!</span> Ik ben Anthony, 26 jaar uit Amersfoort. 
+                Al sinds de basisschool bezig met programmeren - begon als kind met scripts en ben nooit gestopt.
+              </p>
+              <p className="text-stone-600 dark:text-stone-400">
+                Van websites tot mobiele apps en automatisering - ik bouw wat nodig is. 
+                Focus op <span className="font-semibold text-purple-600 dark:text-purple-400">kwaliteit</span> en 
+                <span className="font-semibold text-blue-600 dark:text-blue-400"> eerlijke prijzen</span>.
+              </p>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Introductie tekst met enhanced styling */}
-      <div className="mb-12 relative">
-        <div className="bg-gradient-to-br from-white via-gray-50 to-white dark:from-stone-800 dark:via-stone-900 dark:to-stone-800 rounded-3xl p-8 border border-gray-200 dark:border-stone-700 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-t-3xl"></div>
+        {/* Beschikbaarheid Card */}
+        <div className="relative bg-gradient-to-br from-emerald-50/80 via-green-50/50 to-blue-50/50 dark:from-emerald-900/20 dark:via-green-900/20 dark:to-blue-900/20 backdrop-blur-xl rounded-3xl p-8 border border-emerald-200/60 dark:border-emerald-700/60 shadow-2xl hover:shadow-3xl transition-all duration-500 group overflow-hidden">
+          {/* Floating gradient orb */}
+          <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-gradient-to-br from-emerald-400/30 to-blue-400/30 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
           
-          <h4 className="text-2xl font-black text-stone-900 dark:text-stone-100 mb-6 flex items-center gap-3">
-            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
-            Over Mij
-            <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-          </h4>
-          
-          <div className="space-y-6 text-lg leading-relaxed">
-            <p className="text-stone-700 dark:text-stone-300">
-              <span className="font-bold text-stone-900 dark:text-stone-100">Hoi!</span> Ik ben Anthony, 26 jaar en woon in Amersfoort. Al sinds de basisschool ben ik bezig met programmeren - 
-              begon als klein kind met simpele scripts en ben nooit meer gestopt.
-            </p>
-            <p className="text-stone-700 dark:text-stone-300">
-              Ik bouw eigenlijk alles - <span className="font-semibold text-gray-800 dark:text-gray-200">websites</span>, 
-              <span className="font-semibold text-gray-700 dark:text-gray-300"> apps</span>, 
-              <span className="font-semibold text-gray-600 dark:text-gray-400"> automatisering</span>, je noemt het maar op. 
-              Wat ik vooral fijn vind is dat ik per project kijk naar wat er echt nodig is qua tijd en complexiteit, 
-              waardoor ik vaak goedkoper uitkom dan grote bureaus.
-            </p>
-            <div className="bg-gradient-to-r from-emerald-50 to-blue-50 dark:from-emerald-900/20 dark:to-blue-900/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800">
-              <p className="text-stone-700 dark:text-stone-300 font-semibold">
-                <span className="text-emerald-600 dark:text-emerald-400">✨ Beschikbaar</span> voor freelance projecten en vaste samenwerkingen. 
-                Laten we kijken wat ik voor jou kan betekenen.
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-3 h-3 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full animate-pulse"></div>
+              <h4 className="text-2xl font-black text-stone-900 dark:text-stone-100">Status</h4>
+              <div className="flex-1 h-px bg-gradient-to-r from-emerald-500/30 to-transparent"></div>
+            </div>
+            
+            {/* Status indicator */}
+            <div className="bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-2xl p-6 mb-4 shadow-lg hover:shadow-xl transition-all duration-300 group/status">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-4 h-4 bg-white rounded-full animate-pulse"></div>
+                <span className="text-xl font-black">Beschikbaar</span>
+              </div>
+              <p className="text-emerald-100 font-medium">
+                Open voor nieuwe projecten en samenwerkingen
+              </p>
+            </div>
+            
+            <div className="text-stone-600 dark:text-stone-400">
+              <p className="text-sm leading-relaxed">
+                Laten we kijken wat ik voor jou kan betekenen. Van idee tot eindproduct - 
+                <span className="font-semibold text-emerald-600 dark:text-emerald-400"> samen maken we het waar</span>.
               </p>
             </div>
           </div>
@@ -322,31 +381,66 @@ export function AboutModal() {
         </div>
       </div>
 
-      {/* Enhanced Contact buttons */}
-      <div className="flex flex-col sm:flex-row gap-6 justify-center">
-        <a
-          href="tel:0640470662"
-          className="group relative bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 dark:from-stone-100 dark:via-stone-200 dark:to-stone-100 text-stone-50 dark:text-stone-900 px-10 py-4 rounded-full font-bold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl overflow-hidden"
-        >
-          <span className="relative z-10 flex items-center gap-3">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-            Neem Contact Op
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-          </span>
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-700 via-stone-600 to-stone-700 dark:from-stone-300 dark:via-stone-200 dark:to-stone-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </a>
-        <a
-          href="https://linkedin.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative border-2 border-stone-300 dark:border-stone-600 text-stone-700 dark:text-stone-300 px-10 py-4 rounded-full font-bold hover:border-stone-400 hover:bg-stone-100 dark:hover:border-stone-500 dark:hover:bg-stone-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
-        >
-          <span className="relative z-10 flex items-center gap-3">
-            <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-            Bekijk LinkedIn
-            <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.7s' }}></div>
-          </span>
-        </a>
+      {/* Modern Contact Section */}
+      <div className="text-center">
+        <div className="mb-8">
+          <h4 className="text-3xl font-black text-stone-900 dark:text-stone-100 mb-4">
+            Laten we <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">samenwerken</span>
+          </h4>
+          <p className="text-stone-600 dark:text-stone-400 max-w-md mx-auto">
+            Klaar om jouw idee om te zetten in een geweldig product? Laten we praten.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          {/* Primary CTA */}
+          <a
+            href="tel:0640470662"
+            className="group relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl overflow-hidden min-w-[200px]"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-3">
+              <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+              Bel Direct
+              <div className="w-3 h-3 bg-white/80 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+
+          {/* Secondary CTA */}
+          <a
+            href="mailto:anthonyverruijt@hotmail.com"
+            className="group relative bg-white/80 dark:bg-stone-800/80 backdrop-blur-xl border-2 border-gray-200 dark:border-stone-600 text-stone-700 dark:text-stone-300 px-8 py-4 rounded-2xl font-bold hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl min-w-[200px]"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-3">
+              <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+              Email Sturen
+              <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.7s' }}></div>
+            </span>
+          </a>
+        </div>
+
+        {/* Quick links */}
+        <div className="mt-8 flex items-center justify-center gap-6">
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+          >
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            LinkedIn
+          </a>
+          <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300"
+          >
+            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+            GitHub
+          </a>
+        </div>
       </div>
 
       <style jsx>{`
