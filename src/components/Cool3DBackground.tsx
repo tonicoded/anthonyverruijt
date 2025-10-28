@@ -6,6 +6,7 @@ export function Cool3DBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number>()
   const [isDark, setIsDark] = useState(false)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     // Check theme
@@ -34,261 +35,375 @@ export function Cool3DBackground() {
     setCanvasSize()
     window.addEventListener('resize', setCanvasSize)
 
-    // Smooth 3D geometric shapes
-    interface Shape3D {
+    // Mouse tracking for interactivity
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({
+        x: e.clientX / window.innerWidth,
+        y: e.clientY / window.innerHeight
+      })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+
+    // EPIC NEURAL NETWORK SYSTEM
+    interface NeuralNode {
       x: number
       y: number
       z: number
-      rotX: number
-      rotY: number
-      rotZ: number
-      size: number
-      baseSize: number
-      speedX: number
-      speedY: number
-      speedZ: number
-      type: 'cube' | 'sphere' | 'diamond'
-      opacity: number
+      targetX: number
+      targetY: number
+      energy: number
+      pulse: number
+      connections: number[]
+      type: 'main' | 'secondary' | 'data'
+      activity: number
     }
 
-    const shapes: Shape3D[] = []
+    const neuralNodes: NeuralNode[] = []
+    const gridSize = 6
+    const spacing = Math.min(canvas.width, canvas.height) / (gridSize + 1)
 
-    // Create visible but balanced 3D shapes
-    for (let i = 0; i < 8; i++) {
-      const types: Array<'cube' | 'sphere' | 'diamond'> = ['cube', 'sphere', 'diamond']
-      const baseSize = Math.random() * 35 + 25
-      shapes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        z: Math.random() * 400 + 200,
-        rotX: Math.random() * Math.PI * 2,
-        rotY: Math.random() * Math.PI * 2,
-        rotZ: Math.random() * Math.PI * 2,
-        size: baseSize,
-        baseSize: baseSize,
-        speedX: (Math.random() - 0.5) * 0.4,
-        speedY: (Math.random() - 0.5) * 0.3,
-        speedZ: (Math.random() - 0.5) * 0.2,
-        type: types[Math.floor(Math.random() * types.length)],
-        opacity: Math.random() * 0.4 + 0.3
+    // Create neural network grid
+    for (let i = 0; i < gridSize; i++) {
+      for (let j = 0; j < gridSize; j++) {
+        const x = spacing * (i + 1) + (Math.random() - 0.5) * 50
+        const y = spacing * (j + 1) + (Math.random() - 0.5) * 50
+        neuralNodes.push({
+          x,
+          y,
+          z: Math.random() * 200 + 100,
+          targetX: x,
+          targetY: y,
+          energy: Math.random(),
+          pulse: Math.random() * Math.PI * 2,
+          connections: [],
+          type: Math.random() < 0.3 ? 'main' : Math.random() < 0.6 ? 'secondary' : 'data',
+          activity: 0
+        })
+      }
+    }
+
+    // Create intelligent connections
+    neuralNodes.forEach((node, i) => {
+      neuralNodes.forEach((otherNode, j) => {
+        if (i !== j) {
+          const distance = Math.sqrt(
+            Math.pow(node.x - otherNode.x, 2) + Math.pow(node.y - otherNode.y, 2)
+          )
+          if (distance < spacing * 2.2 && Math.random() < 0.4) {
+            node.connections.push(j)
+          }
+        }
       })
-    }
+    })
 
-    // Subtle floating particles
-    interface Particle {
+    // DNA HELIX SYSTEM
+    interface DNAPoint {
       x: number
       y: number
       z: number
-      vx: number
-      vy: number
-      vz: number
-      size: number
-      baseSize: number
-      life: number
-      maxLife: number
+      angle: number
+      strand: number
+      radius: number
+      baseY: number
     }
 
-    const particles: Particle[] = []
-    for (let i = 0; i < 15; i++) {
-      const baseSize = Math.random() * 2 + 1
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        z: Math.random() * 300 + 100,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        vz: (Math.random() - 0.5) * 0.1,
-        size: baseSize,
-        baseSize: baseSize,
-        life: Math.random() * 200 + 100,
-        maxLife: 300
-      })
-    }
+    const dnaHelixes: Array<{
+      centerX: number
+      centerY: number
+      points: DNAPoint[]
+      rotation: number
+      height: number
+    }> = []
 
-    // Draw smooth 3D shape
-    const drawShape = (shape: Shape3D) => {
-      ctx.save()
-      
-      const perspective = 800
-      const scale = Math.max(0.2, Math.min(1, perspective / (perspective + shape.z)))
-      
-      ctx.translate(shape.x, shape.y)
-      ctx.scale(scale, scale)
+    // Create DNA helixes
+    for (let h = 0; h < 3; h++) {
+      const helix = {
+        centerX: (canvas.width / 4) * (h + 1),
+        centerY: canvas.height / 2,
+        points: [] as DNAPoint[],
+        rotation: 0,
+        height: 300
+      }
 
-      const baseColor = isDark ? [214, 211, 209] : [87, 83, 78]
-      const finalOpacity = Math.min(1, shape.opacity * scale * 1.5)
-
-      switch (shape.type) {
-        case 'cube':
-          // Clear visible cube with better 3D effect
-          const size = shape.size
-          ctx.save()
-          ctx.rotate(shape.rotY * 0.5)
-          
-          // Front face - main visible face
-          ctx.beginPath()
-          ctx.rect(-size/2, -size/2, size, size)
-          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.6})`
-          ctx.fill()
-          ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity})`
-          ctx.lineWidth = 2
-          ctx.stroke()
-          
-          // Top face for 3D depth
-          ctx.beginPath()
-          ctx.moveTo(-size/2, -size/2)
-          ctx.lineTo(-size/2 + size*0.4, -size/2 - size*0.4)
-          ctx.lineTo(size/2 + size*0.4, -size/2 - size*0.4)
-          ctx.lineTo(size/2, -size/2)
-          ctx.closePath()
-          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.4})`
-          ctx.fill()
-          ctx.stroke()
-          
-          // Right side face
-          ctx.beginPath()
-          ctx.moveTo(size/2, -size/2)
-          ctx.lineTo(size/2 + size*0.4, -size/2 - size*0.4)
-          ctx.lineTo(size/2 + size*0.4, size/2 - size*0.4)
-          ctx.lineTo(size/2, size/2)
-          ctx.closePath()
-          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.3})`
-          ctx.fill()
-          ctx.stroke()
-          
-          ctx.restore()
-          break
-
-        case 'sphere':
-          // Enhanced gradient sphere
-          const gradient = ctx.createRadialGradient(-shape.size*0.4, -shape.size*0.4, 0, 0, 0, shape.size)
-          gradient.addColorStop(0, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.8})`)
-          gradient.addColorStop(0.7, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.4})`)
-          gradient.addColorStop(1, `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.1})`)
-          
-          ctx.beginPath()
-          ctx.arc(0, 0, shape.size, 0, Math.PI * 2)
-          ctx.fillStyle = gradient
-          ctx.fill()
-          
-          // Add outer ring for definition
-          ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.8})`
-          ctx.lineWidth = 2
-          ctx.stroke()
-          
-          // Inner highlight
-          ctx.beginPath()
-          ctx.arc(-shape.size*0.3, -shape.size*0.3, shape.size*0.2, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${baseColor[0] + 20}, ${baseColor[1] + 20}, ${baseColor[2] + 20}, ${finalOpacity * 0.6})`
-          ctx.fill()
-          break
-
-        case 'diamond':
-          // Enhanced diamond with inner detail
-          ctx.save()
-          ctx.rotate(shape.rotZ * 0.7)
-          
-          // Outer diamond
-          ctx.beginPath()
-          ctx.moveTo(0, -shape.size)
-          ctx.lineTo(shape.size * 0.7, 0)
-          ctx.lineTo(0, shape.size)
-          ctx.lineTo(-shape.size * 0.7, 0)
-          ctx.closePath()
-          
-          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity * 0.5})`
-          ctx.fill()
-          ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${finalOpacity})`
-          ctx.lineWidth = 2
-          ctx.stroke()
-          
-          // Inner diamond for depth
-          ctx.beginPath()
-          ctx.moveTo(0, -shape.size * 0.6)
-          ctx.lineTo(shape.size * 0.4, 0)
-          ctx.lineTo(0, shape.size * 0.6)
-          ctx.lineTo(-shape.size * 0.4, 0)
-          ctx.closePath()
-          
-          ctx.fillStyle = `rgba(${baseColor[0] + 15}, ${baseColor[1] + 15}, ${baseColor[2] + 15}, ${finalOpacity * 0.7})`
-          ctx.fill()
-          
-          ctx.restore()
-          break
+      for (let i = 0; i < 40; i++) {
+        const progress = i / 39
+        const y = progress * helix.height - helix.height / 2
+        
+        // Two strands of DNA
+        for (let strand = 0; strand < 2; strand++) {
+          helix.points.push({
+            x: 0,
+            y,
+            z: 0,
+            angle: progress * Math.PI * 4 + strand * Math.PI,
+            strand,
+            radius: 30 + Math.sin(progress * Math.PI * 2) * 10,
+            baseY: y
+          })
+        }
       }
       
-      ctx.restore()
+      dnaHelixes.push(helix)
     }
 
-    // Smooth animation loop
+    // CYBERPUNK GRID SYSTEM
+    interface GridPoint {
+      x: number
+      y: number
+      active: boolean
+      energy: number
+      ripple: number
+    }
+
+    const cyberpunkGrid: GridPoint[][] = []
+    const gridResolution = 25
+    const cellSize = Math.max(canvas.width, canvas.height) / gridResolution
+
+    for (let i = 0; i <= gridResolution; i++) {
+      cyberpunkGrid[i] = []
+      for (let j = 0; j <= gridResolution; j++) {
+        cyberpunkGrid[i][j] = {
+          x: i * cellSize,
+          y: j * cellSize,
+          active: false,
+          energy: 0,
+          ripple: 0
+        }
+      }
+    }
+
+    // FLOATING CODE MATRIX
+    interface CodeRain {
+      x: number
+      y: number
+      speed: number
+      chars: string[]
+      opacity: number
+      type: 'code' | 'binary' | 'hex'
+    }
+
+    const codeDrops: CodeRain[] = []
+    const codeChars = {
+      code: ['react', 'swift', 'python', 'typescript', 'nextjs', 'api', 'json', 'css'],
+      binary: ['0', '1'],
+      hex: ['0x', 'FF', 'A3', '7C', 'B2', 'E1']
+    }
+
+    for (let i = 0; i < 12; i++) {
+      const types: Array<'code' | 'binary' | 'hex'> = ['code', 'binary', 'hex']
+      const type = types[Math.floor(Math.random() * types.length)]
+      codeDrops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: Math.random() * 2 + 1,
+        chars: Array.from({ length: 8 }, () => 
+          codeChars[type][Math.floor(Math.random() * codeChars[type].length)]
+        ),
+        opacity: Math.random() * 0.6 + 0.2,
+        type
+      })
+    }
+
+    // EPIC ANIMATION LOOP WITH MULTIPLE LAYERED EFFECTS
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      time += 0.01
+      time += 0.016
 
-      // Update and draw smooth 3D shapes
-      shapes.forEach((shape, index) => {
-        // Gentle floating movement
-        shape.x += shape.speedX + Math.sin(time * 0.3 + index) * 0.2
-        shape.y += shape.speedY + Math.cos(time * 0.2 + index) * 0.15
-        shape.z += shape.speedZ + Math.sin(time * 0.1 + index) * 0.1
+      const baseColor = isDark ? [214, 211, 209] : [87, 83, 78]
+      const accentColor = isDark ? [168, 162, 158] : [120, 113, 108]
+
+      // 1. CYBERPUNK GRID BACKGROUND
+      ctx.globalAlpha = 0.1
+      for (let i = 0; i < cyberpunkGrid.length; i++) {
+        for (let j = 0; j < cyberpunkGrid[i].length; j++) {
+          const point = cyberpunkGrid[i][j]
+          
+          // Create ripple effect from mouse
+          const mouseDistance = Math.sqrt(
+            Math.pow(point.x - mousePos.x * canvas.width, 2) +
+            Math.pow(point.y - mousePos.y * canvas.height, 2)
+          )
+          
+          if (mouseDistance < 150) {
+            point.active = true
+            point.energy = Math.max(0.8, 1 - mouseDistance / 150)
+            point.ripple = time * 5
+          } else {
+            point.energy *= 0.95
+            point.active = point.energy > 0.1
+          }
+
+          if (point.active) {
+            ctx.strokeStyle = `rgba(${accentColor[0]}, ${accentColor[1]}, ${accentColor[2]}, ${point.energy})`
+            ctx.lineWidth = 1
+            
+            // Draw grid lines
+            if (i < cyberpunkGrid.length - 1) {
+              ctx.beginPath()
+              ctx.moveTo(point.x, point.y)
+              ctx.lineTo(cyberpunkGrid[i + 1][j].x, cyberpunkGrid[i + 1][j].y)
+              ctx.stroke()
+            }
+            if (j < cyberpunkGrid[i].length - 1) {
+              ctx.beginPath()
+              ctx.moveTo(point.x, point.y)
+              ctx.lineTo(cyberpunkGrid[i][j + 1].x, cyberpunkGrid[i][j + 1].y)
+              ctx.stroke()
+            }
+          }
+        }
+      }
+
+      // 2. NEURAL NETWORK SYSTEM
+      ctx.globalAlpha = 1
+      
+      // Update neural activity
+      neuralNodes.forEach((node, i) => {
+        node.pulse += 0.1
+        node.energy = (Math.sin(node.pulse) + 1) / 2
         
-        // Smooth rotation
-        shape.rotX += 0.005
-        shape.rotY += 0.003
-        shape.rotZ += 0.004
+        // Mouse interaction
+        const mouseDistance = Math.sqrt(
+          Math.pow(node.x - mousePos.x * canvas.width, 2) +
+          Math.pow(node.y - mousePos.y * canvas.height, 2)
+        )
+        
+        if (mouseDistance < 100) {
+          node.activity = Math.min(1, node.activity + 0.05)
+        } else {
+          node.activity *= 0.98
+        }
 
-        // Gentle size pulsing
-        shape.size = shape.baseSize + Math.sin(time * 0.4 + index) * 4
-
-        // Boundary wrapping
-        if (shape.x > canvas.width + 80) shape.x = -80
-        if (shape.x < -80) shape.x = canvas.width + 80
-        if (shape.y > canvas.height + 80) shape.y = -80
-        if (shape.y < -80) shape.y = canvas.height + 80
-        if (shape.z > 600) shape.z = 200
-        if (shape.z < 200) shape.z = 600
-
-        drawShape(shape)
+        // Gentle floating
+        node.x += Math.sin(time * 0.5 + i) * 0.3
+        node.y += Math.cos(time * 0.3 + i) * 0.2
       })
 
-      // Update and draw smooth particles  
-      particles.forEach((particle, index) => {
-        // Gentle movement
-        particle.x += particle.vx + Math.sin(time * 0.4 + index) * 0.1
-        particle.y += particle.vy + Math.cos(time * 0.3 + index) * 0.1
-        particle.z += particle.vz
+      // Draw neural connections with data flow
+      neuralNodes.forEach((node, i) => {
+        node.connections.forEach(connectionIndex => {
+          const targetNode = neuralNodes[connectionIndex]
+          if (!targetNode) return
 
-        // Boundary wrapping
-        if (particle.x > canvas.width) particle.x = 0
-        if (particle.x < 0) particle.x = canvas.width
-        if (particle.y > canvas.height) particle.y = 0
-        if (particle.y < 0) particle.y = canvas.height
-        if (particle.z > 500) particle.z = 100
-        if (particle.z < 100) particle.z = 500
+          const connectionActivity = (node.activity + targetNode.activity) / 2
+          
+          ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${0.3 + connectionActivity * 0.5})`
+          ctx.lineWidth = 1 + connectionActivity * 2
+          
+          ctx.beginPath()
+          ctx.moveTo(node.x, node.y)
+          ctx.lineTo(targetNode.x, targetNode.y)
+          ctx.stroke()
 
-        // 3D perspective
-        const perspective = 600
-        const scale = Math.max(0.3, perspective / (perspective + particle.z))
-        const size = Math.max(1, particle.baseSize * scale)
+          // Animated data packets
+          if (connectionActivity > 0.3) {
+            const progress = (time * 2 + i) % 1
+            const packetX = node.x + (targetNode.x - node.x) * progress
+            const packetY = node.y + (targetNode.y - node.y) * progress
+            
+            ctx.beginPath()
+            ctx.arc(packetX, packetY, 3, 0, Math.PI * 2)
+            ctx.fillStyle = `rgba(${accentColor[0]}, ${accentColor[1]}, ${accentColor[2]}, ${connectionActivity})`
+            ctx.fill()
+          }
+        })
+      })
 
-        // Pulsing effect
-        particle.life += 1
-        if (particle.life > particle.maxLife) particle.life = 0
-        const pulseOpacity = Math.sin((particle.life / particle.maxLife) * Math.PI * 2) * 0.3 + 0.7
-
-        // Draw particle
+      // Draw neural nodes
+      neuralNodes.forEach(node => {
+        const size = node.type === 'main' ? 8 : node.type === 'secondary' ? 6 : 4
+        const glowSize = size + node.activity * 6
+        
+        // Glow effect
+        ctx.shadowColor = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${node.activity})`
+        ctx.shadowBlur = glowSize
+        
         ctx.beginPath()
-        ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2)
-        const baseColor = isDark ? [214, 211, 209] : [87, 83, 78]
-        ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${0.3 * scale * pulseOpacity})`
+        ctx.arc(node.x, node.y, size, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${0.7 + node.energy * 0.3})`
         ctx.fill()
         
-        // Add subtle glow to particles
-        ctx.shadowColor = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0.3)`
-        ctx.shadowBlur = 3
-        ctx.fill()
         ctx.shadowBlur = 0
       })
+
+      // 3. DNA HELIX SYSTEM
+      dnaHelixes.forEach(helix => {
+        helix.rotation += 0.01
+        
+        // Update DNA points
+        helix.points.forEach(point => {
+          const finalAngle = point.angle + helix.rotation
+          point.x = Math.cos(finalAngle) * point.radius
+          point.z = Math.sin(finalAngle) * point.radius
+        })
+
+        // Draw DNA strands
+        for (let strand = 0; strand < 2; strand++) {
+          const strandPoints = helix.points.filter(p => p.strand === strand)
+          
+          ctx.strokeStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, 0.6)`
+          ctx.lineWidth = 2
+          ctx.beginPath()
+          
+          strandPoints.forEach((point, i) => {
+            const screenX = helix.centerX + point.x
+            const screenY = helix.centerY + point.y
+            
+            if (i === 0) ctx.moveTo(screenX, screenY)
+            else ctx.lineTo(screenX, screenY)
+          })
+          ctx.stroke()
+
+          // Draw base connections
+          strandPoints.forEach((point, i) => {
+            if (i % 4 === 0) {
+              const otherStrand = helix.points.find(p => 
+                Math.abs(p.baseY - point.baseY) < 5 && p.strand !== strand
+              )
+              
+              if (otherStrand) {
+                ctx.strokeStyle = `rgba(${accentColor[0]}, ${accentColor[1]}, ${accentColor[2]}, 0.4)`
+                ctx.lineWidth = 1
+                ctx.beginPath()
+                ctx.moveTo(helix.centerX + point.x, helix.centerY + point.y)
+                ctx.lineTo(helix.centerX + otherStrand.x, helix.centerY + otherStrand.y)
+                ctx.stroke()
+              }
+            }
+          })
+        }
+      })
+
+      // 4. FLOATING CODE MATRIX
+      codeDrops.forEach(drop => {
+        drop.y += drop.speed
+        if (drop.y > canvas.height + 100) {
+          drop.y = -100
+          drop.x = Math.random() * canvas.width
+        }
+
+        ctx.font = drop.type === 'code' ? '12px monospace' : '10px monospace'
+        
+        drop.chars.forEach((char, i) => {
+          const alpha = drop.opacity * (1 - i / drop.chars.length)
+          ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${alpha})`
+          ctx.fillText(char, drop.x, drop.y - i * 20)
+        })
+      })
+
+      // 5. INTERACTIVE ENERGY WAVES
+      if (Math.random() < 0.03) {
+        const waveX = mousePos.x * canvas.width + (Math.random() - 0.5) * 200
+        const waveY = mousePos.y * canvas.height + (Math.random() - 0.5) * 200
+        
+        for (let r = 0; r < 100; r += 10) {
+          ctx.strokeStyle = `rgba(${accentColor[0]}, ${accentColor[1]}, ${accentColor[2]}, ${0.5 * (1 - r/100)})`
+          ctx.lineWidth = 1
+          ctx.beginPath()
+          ctx.arc(waveX, waveY, r, 0, Math.PI * 2)
+          ctx.stroke()
+        }
+      }
 
       animationRef.current = requestAnimationFrame(animate)
     }
