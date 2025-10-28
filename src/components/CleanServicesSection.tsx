@@ -9,31 +9,31 @@ export function CleanServicesSection() {
       title: 'Websites',
       description: 'Responsive, snelle websites die bezoekers overtuigen en converteren naar klanten.',
       features: ['Mobile-first design', 'SEO geoptimaliseerd', 'CMS integratie'],
-      price: 'Vanaf €2.500',
-      timeline: '2-4 weken'
+      price: 'Vanaf €350',
+      timeline: '1-2 weken'
     },
     {
       icon: Smartphone,
       title: 'iOS Apps',
       description: 'Native iPhone en iPad apps die gebruikers echt willen gebruiken.',
       features: ['Swift & SwiftUI', 'App Store ready', 'Universal app'],
-      price: 'Vanaf €5.000',
-      timeline: '6-12 weken'
+      price: 'Vanaf €750',
+      timeline: '4-8 weken'
     },
     {
       icon: Code,
       title: 'Web Apps',
       description: 'Krachtige webapplicaties voor je specifieke bedrijfsprocessen.',
       features: ['Custom functionaliteit', 'Database design', 'API integratie'],
-      price: 'Vanaf €7.500',
-      timeline: '8-16 weken'
+      price: 'Vanaf €1.200',
+      timeline: '3-6 weken'
     },
     {
       icon: Zap,
       title: 'Automatisering',
       description: 'Python scripts die repetitieve taken automatiseren en tijd besparen.',
       features: ['Data processing', 'Workflow automation', 'Report generatie'],
-      price: 'Vanaf €1.500',
+      price: 'Vanaf €200',
       timeline: '1-3 weken'
     }
   ]

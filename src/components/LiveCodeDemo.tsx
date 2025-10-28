@@ -120,13 +120,28 @@ export function CleanCodeDemo() {
         )}
       </div>
 
-      {/* Subtle status */}
+      {/* Enhanced status with progress */}
       <div className="flex items-center justify-between mt-6 pt-4 border-t border-stone-200 dark:border-stone-700">
-        <div className="flex items-center gap-2">
-          <div className={`w-2 h-2 rounded-full ${isCompleted ? 'bg-green-600' : 'bg-stone-400'}`}></div>
-          <span className="text-xs text-stone-500">
-            {isCompleted ? 'Website live' : 'Aan het bouwen...'}
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            {!isCompleted ? (
+              <div className="flex gap-1">
+                <div className="w-1 h-1 bg-stone-400 rounded-full animate-pulse"></div>
+                <div className="w-1 h-1 bg-stone-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-1 h-1 bg-stone-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+            ) : (
+              <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+            )}
+          </div>
+          <span className="text-xs text-stone-500 font-medium">
+            {isCompleted ? '✓ Website live' : 'Aan het bouwen...'}
           </span>
+          {!isCompleted && (
+            <div className="w-16 h-1 bg-stone-200 dark:bg-stone-700 rounded-full overflow-hidden">
+              <div className="h-full bg-stone-400 rounded-full animate-pulse" style={{ width: `${(currentLineIndex / codeSnippets.length) * 100}%` }}></div>
+            </div>
+          )}
         </div>
         <span className="text-xs text-stone-400">Anthony&apos;s approach</span>
       </div>

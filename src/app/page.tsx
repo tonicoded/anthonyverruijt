@@ -14,6 +14,14 @@ import { CleanCodeDemo } from '@/components/LiveCodeDemo'
 import { CleanServicesSection } from '@/components/CleanServicesSection'
 import { CleanTestimonialsSection } from '@/components/CleanTestimonialsSection'
 import { CleanContactSection } from '@/components/CleanContactSection'
+import { FloatingSkillIndicators } from '@/components/FloatingSkillIndicators'
+import { CursorTrail } from '@/components/CursorTrail'
+import { InteractiveGrid } from '@/components/InteractiveGrid'
+import { HoverGlow } from '@/components/HoverGlow'
+import { ScrollProgress } from '@/components/ScrollProgress'
+import { SkillRadar } from '@/components/SkillRadar'
+import { InteractiveTypography } from '@/components/InteractiveTypography'
+import { ParallaxText } from '@/components/ParallaxText'
 
 export default function Home() {
   const [activeModal, setActiveModal] = useState<string | null>(null)
@@ -120,12 +128,18 @@ export default function Home() {
 
   return (
     <>
-      {/* Particle System Background */}
+      {/* Interactive Background Elements */}
       <ParticleSystem />
+      <FloatingSkillIndicators />
+      <CursorTrail />
+      <ScrollProgress />
       
       {/* Hero Section */}
       <section className="h-screen bg-stone-50 dark:bg-slate-900 flex items-center justify-center px-4 relative overflow-hidden">
       
+        {/* Interactive Grid Background */}
+        <InteractiveGrid />
+        
         {/* SPECTACULAR floating background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Original floating circles with enhanced effects */}
@@ -212,13 +226,16 @@ export default function Home() {
 
           {/* Name - met hover 3D effect */}
           <div className="flex-shrink-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black relative group cursor-pointer text-black dark:text-white transform transition-all duration-500 hover:scale-105 hover:-rotate-1 hover:shadow-2xl hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-gray-600 hover:via-gray-800 hover:to-gray-600 dark:hover:from-gray-300 dark:hover:via-gray-100 dark:hover:to-gray-300">
-              Anthony Verruijt
-              {/* Underline effect */}
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-700 ease-out"></div>
-              {/* Glow effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-lg bg-gradient-to-r from-blue-500 to-purple-500 -z-10"></div>
-            </h1>
+            <HoverGlow glowColor="stone" intensity={0.15}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black relative group cursor-pointer text-black dark:text-white transform transition-all duration-500 hover:scale-105 hover:-rotate-1 hover:shadow-2xl">
+                <InteractiveTypography 
+                  text="Anthony Verruijt" 
+                  className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-gray-600 hover:via-gray-800 hover:to-gray-600 dark:hover:from-gray-300 dark:hover:via-gray-100 dark:hover:to-gray-300"
+                />
+                {/* Underline effect */}
+                <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-stone-500 to-stone-700 dark:from-stone-400 dark:to-stone-200 group-hover:w-full transition-all duration-700 ease-out"></div>
+              </h1>
+            </HoverGlow>
           </div>
 
           {/* Tagline - met hover 3D effect */}
@@ -261,41 +278,45 @@ export default function Home() {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center flex-shrink-0">
-            <a
-              href="tel:0640470662"
-              className="group relative px-8 py-4 bg-gradient-to-r from-gray-900 to-black dark:bg-slate-700 rounded-xl font-bold text-white text-sm sm:text-base hover:scale-110 hover:-translate-y-1 hover:rotate-1 transition-all duration-300 hover:shadow-2xl border border-gray-700 dark:border-slate-600 hover:border-gray-600 dark:hover:border-slate-500 overflow-hidden"
-            >
-              <span className="flex items-center gap-2 relative z-10">
-                <div className="w-2 h-2 bg-gray-300 dark:bg-slate-400 rounded-full group-hover:bg-blue-400 transition-colors duration-300"></div>
-                Neem Contact Op
-                <div className="w-2 h-2 bg-gray-300 dark:bg-slate-400 rounded-full group-hover:bg-purple-400 transition-colors duration-300"></div>
-              </span>
-              {/* Hover shimmer effect */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
-            </a>
+            <HoverGlow glowColor="blue" intensity={0.2}>
+              <a
+                href="tel:0640470662"
+                className="group relative px-8 py-4 bg-gradient-to-r from-gray-900 to-black dark:bg-slate-700 rounded-xl font-bold text-white text-sm sm:text-base hover:scale-110 hover:-translate-y-1 hover:rotate-1 transition-all duration-300 hover:shadow-2xl border border-gray-700 dark:border-slate-600 hover:border-gray-600 dark:hover:border-slate-500 overflow-hidden"
+              >
+                <span className="flex items-center gap-2 relative z-10">
+                  <div className="w-2 h-2 bg-gray-300 dark:bg-slate-400 rounded-full group-hover:bg-blue-400 transition-colors duration-300"></div>
+                  Neem Contact Op
+                  <div className="w-2 h-2 bg-gray-300 dark:bg-slate-400 rounded-full group-hover:bg-purple-400 transition-colors duration-300"></div>
+                </span>
+                {/* Hover shimmer effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+              </a>
+            </HoverGlow>
             
-            <a
-              href="mailto:anthonyverruijt@hotmail.com"
-              className="group relative px-8 py-4 bg-white dark:bg-gray-900 rounded-xl font-bold text-gray-900 dark:text-white text-sm sm:text-base border border-gray-300 dark:border-slate-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:-rotate-1 hover:border-gray-400 dark:hover:border-slate-500 hover:shadow-2xl overflow-hidden"
-            >
-              <span className="flex items-center gap-2 relative z-10">
-                <div className="w-2 h-2 bg-gray-600 dark:bg-slate-400 rounded-full group-hover:bg-green-400 transition-colors duration-300"></div>
-                Plan een Gesprek
-                <div className="w-2 h-2 bg-gray-600 dark:bg-slate-400 rounded-full group-hover:bg-orange-400 transition-colors duration-300"></div>
-              </span>
-              {/* Hover shimmer effect */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-gray-400/20 to-transparent skew-x-12"></div>
-            </a>
+            <HoverGlow glowColor="green" intensity={0.15}>
+              <a
+                href="mailto:anthonyverruijt@hotmail.com"
+                className="group relative px-8 py-4 bg-white dark:bg-gray-900 rounded-xl font-bold text-gray-900 dark:text-white text-sm sm:text-base border border-gray-300 dark:border-slate-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:-rotate-1 hover:border-gray-400 dark:hover:border-slate-500 hover:shadow-2xl overflow-hidden"
+              >
+                <span className="flex items-center gap-2 relative z-10">
+                  <div className="w-2 h-2 bg-gray-600 dark:bg-slate-400 rounded-full group-hover:bg-green-400 transition-colors duration-300"></div>
+                  Plan een Gesprek
+                  <div className="w-2 h-2 bg-gray-600 dark:bg-slate-400 rounded-full group-hover:bg-orange-400 transition-colors duration-300"></div>
+                </span>
+                {/* Hover shimmer effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-gray-400/20 to-transparent skew-x-12"></div>
+              </a>
+            </HoverGlow>
           </div>
         </div>
 
         {/* Scroll indicator */}
         <button
           onClick={scrollToNext}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 animate-bounce"
+          className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors duration-200 animate-bounce z-10"
           aria-label="Scroll naar beneden"
         >
-          <ArrowDown size={24} />
+          <ArrowDown size={20} className="sm:w-6 sm:h-6" />
         </button>
       </section>
 
@@ -303,14 +324,19 @@ export default function Home() {
       <section id="code-demo-section" className="py-20 bg-stone-50 dark:bg-stone-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-stone-100 mb-6">
-              Hoe ik werk
-            </h2>
+            <ParallaxText speed={0.3}>
+              <h2 className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-stone-100 mb-6">
+                <InteractiveTypography text="Hoe ik werk" />
+              </h2>
+            </ParallaxText>
             <p className="text-lg text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
               Een kijkje in mijn ontwikkelproces. Clean code, duidelijke structuur.
             </p>
           </div>
           <CleanCodeDemo />
+          
+          {/* Add SkillRadar component */}
+          <SkillRadar />
         </div>
       </section>
 
