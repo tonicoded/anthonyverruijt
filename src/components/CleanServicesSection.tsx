@@ -7,8 +7,8 @@ export function CleanServicesSection() {
     {
       icon: Globe,
       title: 'Websites',
-      description: 'Professionele websites laten maken die echt resultaat opleveren. SEO geoptimaliseerd en mobile-first.',
-      features: ['Responsive webdesign', 'SEO geoptimaliseerd', 'WordPress/CMS', 'Google ranking'],
+      description: 'Responsive, snelle websites die bezoekers overtuigen en converteren naar klanten.',
+      features: ['Mobile-first design', 'SEO geoptimaliseerd', 'CMS integratie'],
       price: 'Vanaf €350',
       timeline: '3-7 dagen'
     },
@@ -45,12 +45,10 @@ export function CleanServicesSection() {
         {/* Clean header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-stone-100 mb-6">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Website Laten Maken</span> & Digitale Oplossingen
+            Wat ik voor je kan maken
           </h2>
           <p className="text-lg text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
-            Van <strong className="text-stone-800 dark:text-stone-200">professionele websites maken</strong> tot complete 
-            <strong className="text-stone-800 dark:text-stone-200"> webshops</strong> en <strong className="text-stone-800 dark:text-stone-200">iOS apps</strong>. 
-            Ik help Nederlandse bedrijven van idee naar online succes.
+            Van eenvoudige website tot complexe applicatie. Ik help je van idee naar werkende oplossing.
           </p>
         </div>
 
@@ -110,11 +108,10 @@ export function CleanServicesSection() {
         <div className="text-center">
           <div className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-8 border border-stone-200 dark:border-stone-700 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Website Laten Maken</span> - Gratis Advies
+              Wil je weten wat mogelijk is?
             </h3>
             <p className="text-stone-600 dark:text-stone-400 mb-6">
-              Wil je een <strong className="text-stone-800 dark:text-stone-200">professionele website laten maken</strong>? 
-              Ik denk graag mee over je project. Gratis adviesgesprek, geen verplichtingen.
+              Ik denk graag mee over je project. Geen verplichtingen, gewoon een gesprek over wat er kan.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
