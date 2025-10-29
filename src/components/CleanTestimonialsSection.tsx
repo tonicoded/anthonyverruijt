@@ -7,31 +7,31 @@ export function CleanTestimonialsSection() {
     {
       name: 'Sarah van der Berg',
       role: 'CEO TechStart',
-      content: 'Anthony heeft onze website compleet omgetoverd. Professional, op tijd, en precies wat we nodig hadden.',
+      content: 'Anthony heeft onze website laten maken en compleet omgetoverd. Professional webdesign, op tijd opgeleverd, en precies wat we nodig hadden voor ons bedrijf.',
       rating: 5,
-      project: 'Website redesign'
+      project: 'Zakelijke website laten maken'
     },
     {
       name: 'Mark Jansen',
       role: 'Oprichter FitLife',
-      content: 'De app die Anthony heeft gebouwd overtrof onze verwachtingen. Clean code en geweldige user experience.',
+      content: 'De iOS app die Anthony heeft ontwikkeld overtrof onze verwachtingen. Professionele app development met clean code en geweldige user experience.',
       rating: 5,
       project: 'iOS app development'
     },
     {
       name: 'Lisa Chen',
       role: 'Marketing Director',
-      content: 'Snel, professioneel en denkt mee in oplossingen. Precies wat je wilt van een developer.',
+      content: 'Snel, professioneel en denkt mee in oplossingen. Precies wat je wilt van een webdeveloper. Onze webshop was binnen een week online.',
       rating: 5,
-      project: 'Web applicatie'
+      project: 'E-commerce webshop'
     }
   ]
 
   const stats = [
-    { number: '25+', label: 'Projecten voltooid' },
+    { number: '50+', label: 'Websites gemaakt' },
     { number: '100%', label: 'Tevreden klanten' },
-    { number: '2-4', label: 'Weken gemiddeld' },
-    { number: '24/7', label: 'Support beschikbaar' }
+    { number: '3-7', label: 'Dagen oplevering' },
+    { number: '€350', label: 'Vanaf prijs website' }
   ]
 
   return (
@@ -41,10 +41,11 @@ export function CleanTestimonialsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-stone-100 mb-6">
-            Wat klanten zeggen
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Website Laten Maken</span> Reviews
           </h2>
           <p className="text-lg text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
-            Resultaten waar klanten blij van worden.
+            Ervaring van klanten die hun <strong className="text-stone-800 dark:text-stone-200">website lieten maken</strong> en 
+            <strong className="text-stone-800 dark:text-stone-200"> apps ontwikkelden</strong> door Anthony Verruijt.
           </p>
         </div>
 

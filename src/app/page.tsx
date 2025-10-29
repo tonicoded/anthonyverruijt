@@ -203,15 +203,15 @@ export default function Home() {
             </h1>
           </div>
 
-          {/* Tagline - met hover 3D effect */}
+          {/* SEO-optimized Tagline */}
           <div className="relative flex-shrink-0 max-w-xl mx-auto">
             <div className="relative text-sm sm:text-lg text-gray-700 dark:text-slate-200 leading-relaxed h-12 sm:h-16 flex items-center justify-center bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-xl border border-gray-200 dark:border-slate-600 px-6 py-3 hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-xl group overflow-hidden">
               <TypewriterEffect 
                 phrases={[
-                  "Professionele websites vanaf €350",
-                  "iOS apps die echt werken", 
-                  "Webshops die verkopen",
-                  "Van idee naar realiteit in 3-7 dagen"
+                  "Website laten maken vanaf €350",
+                  "Professionele webdesign Nederland", 
+                  "iOS apps & webshops",
+                  "Van idee naar online succes"
                 ]}
                 className="font-semibold text-gray-800 dark:text-slate-100 relative z-10"
               />
@@ -269,6 +269,100 @@ export default function Home() {
         </button>
       </section>
 
+      {/* SEO Content Section */}
+      <section className="py-16 bg-white dark:bg-slate-900 relative">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 dark:text-stone-100 mb-6">
+              Website Laten Maken door <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Anthony Verruijt</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-stone-800 dark:text-stone-200">
+                Professionele Websites & Apps in Nederland
+              </h3>
+              <div className="space-y-4 text-stone-600 dark:text-stone-400 leading-relaxed">
+                <p>
+                  Ben je op zoek naar een <strong className="text-stone-800 dark:text-stone-200">website laten maken</strong> die echt resultaat oplevert? 
+                  Als ervaren <strong className="text-stone-800 dark:text-stone-200">webdesigner</strong> en <strong className="text-stone-800 dark:text-stone-200">app developer</strong> 
+                  help ik bedrijven in heel Nederland met professionele digitale oplossingen.
+                </p>
+                <p>
+                  Van een moderne <strong className="text-stone-800 dark:text-stone-200">zakelijke website</strong> tot complete 
+                  <strong className="text-stone-800 dark:text-stone-200"> webshops</strong> en <strong className="text-stone-800 dark:text-stone-200">iOS apps</strong> - 
+                  ik bouw wat jouw bedrijf nodig heeft. Alle websites zijn <strong className="text-stone-800 dark:text-stone-200">SEO geoptimaliseerd</strong>, 
+                  mobile-first en worden snel opgeleverd.
+                </p>
+              </div>
+              
+              {/* Service highlights */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                {[
+                  { title: "Website Maken", desc: "Vanaf €350", icon: "🌐" },
+                  { title: "Webshop", desc: "E-commerce oplossingen", icon: "🛒" },
+                  { title: "iOS Apps", desc: "Native app ontwikkeling", icon: "📱" },
+                  { title: "SEO Optimalisatie", desc: "Google ranking verbeteren", icon: "📈" }
+                ].map((service, i) => (
+                  <div key={i} className="bg-stone-50 dark:bg-stone-800 rounded-xl p-4 border border-stone-200 dark:border-stone-700 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-2xl">{service.icon}</span>
+                      <h4 className="font-bold text-stone-800 dark:text-stone-200">{service.title}</h4>
+                    </div>
+                    <p className="text-sm text-stone-600 dark:text-stone-400">{service.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
+                <h3 className="text-xl font-bold text-stone-800 dark:text-stone-200 mb-4 flex items-center gap-2">
+                  <span className="text-green-500">✓</span> Waarom kiezen voor mij?
+                </h3>
+                <ul className="space-y-3 text-stone-600 dark:text-stone-400">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>15+ jaar ervaring</strong> in webdevelopment</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Snelle oplevering</strong> binnen 3-7 dagen</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Eerlijke prijzen</strong> zonder verborgen kosten</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Persoonlijke aanpak</strong> en direct contact</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Ondersteuning</strong> na oplevering</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="text-center">
+                <a
+                  href="tel:0640470662"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  <span>📞</span>
+                  Gratis Vrijblijvend Gesprek
+                </a>
+                <p className="text-sm text-stone-500 dark:text-stone-400 mt-3">
+                  Bel direct: 06-40 47 06 62
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Code Demo Section */}
       <section id="code-demo-section" className="py-20 bg-stone-50 dark:bg-stone-800">
         <div className="container mx-auto px-4">
@@ -294,6 +388,86 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <CleanTestimonialsSection />
+
+      {/* Additional SEO Content Section */}
+      <section className="py-16 bg-stone-50 dark:bg-stone-800">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid md:grid-cols-3 gap-8">
+            
+            {/* Column 1: Website Development */}
+            <div className="bg-white dark:bg-stone-900 rounded-2xl p-8 border border-stone-200 dark:border-stone-700">
+              <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+                <span className="text-blue-600">Website</span> Ontwikkeling
+              </h3>
+              <ul className="space-y-3 text-stone-600 dark:text-stone-400">
+                <li>• <strong>Responsive webdesign</strong> voor alle apparaten</li>
+                <li>• <strong>SEO geoptimaliseerde</strong> websites</li>
+                <li>• <strong>WordPress</strong> en custom CMS</li>
+                <li>• <strong>E-commerce webshops</strong></li>
+                <li>• <strong>Landing pages</strong> die converteren</li>
+                <li>• <strong>Website onderhoud</strong> en support</li>
+              </ul>
+            </div>
+
+            {/* Column 2: App Development */}
+            <div className="bg-white dark:bg-stone-900 rounded-2xl p-8 border border-stone-200 dark:border-stone-700">
+              <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+                <span className="text-purple-600">App</span> Ontwikkeling
+              </h3>
+              <ul className="space-y-3 text-stone-600 dark:text-stone-400">
+                <li>• <strong>Native iOS apps</strong> in Swift</li>
+                <li>• <strong>iPhone en iPad</strong> applicaties</li>
+                <li>• <strong>App Store</strong> optimalisatie</li>
+                <li>• <strong>Progressive Web Apps</strong> (PWA)</li>
+                <li>• <strong>Cross-platform</strong> oplossingen</li>
+                <li>• <strong>App design</strong> en UX/UI</li>
+              </ul>
+            </div>
+
+            {/* Column 3: Local SEO */}
+            <div className="bg-white dark:bg-stone-900 rounded-2xl p-8 border border-stone-200 dark:border-stone-700">
+              <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+                <span className="text-green-600">Nederland</span> Service
+              </h3>
+              <ul className="space-y-3 text-stone-600 dark:text-stone-400">
+                <li>• <strong>Webdesign Amsterdam</strong> en omgeving</li>
+                <li>• <strong>Website maken</strong> heel Nederland</li>
+                <li>• <strong>Lokale SEO</strong> optimalisatie</li>
+                <li>• <strong>Nederlandse hosting</strong> en domeinen</li>
+                <li>• <strong>Persoonlijke service</strong> en contact</li>
+                <li>• <strong>Snelle oplevering</strong> 3-7 dagen</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-12">
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800 max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+                Klaar om je <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">website te laten maken</span>?
+              </h3>
+              <p className="text-stone-600 dark:text-stone-400 mb-6 max-w-2xl mx-auto">
+                Van simpele <strong>bedrijfswebsite</strong> tot complete <strong>webshop</strong> of <strong>iOS app</strong>. 
+                Ik help je van concept tot online succes. Vraag een vrijblijvende offerte aan.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="tel:0640470662"
+                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  📞 Bel Direct - 06 40 47 06 62
+                </a>
+                <a
+                  href="mailto:anthonyverruijt@hotmail.com"
+                  className="px-8 py-4 border-2 border-stone-300 dark:border-stone-600 text-stone-900 dark:text-stone-100 rounded-xl font-bold hover:bg-stone-100 dark:hover:bg-stone-700 transition-all duration-300 hover:scale-105"
+                >
+                  ✉️ Stuur Email
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <CleanContactSection />
